@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import NavBar from '@/components/Navbar'
 import Providers from './Providers'
 
@@ -21,7 +22,7 @@ export default function RootLayout({ children }) {
           <NavBar />
           {children}
         </Providers>
-        <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js'></script>
+        <Script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js'></Script>
       </body>
     </html>
   )
