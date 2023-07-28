@@ -1,0 +1,27 @@
+{
+  "name": "sistema-web-enfermeria",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.6",
+    "eslint": "8.42.0",
+    "eslint-config-next": "13.4.4",
+    "formik": "^2.4.2",
+    "mui-datatables": "^4.3.0",
+    "mysql2": "^3.3.3",
+    "next": "13.4.4",
+    "next-auth": "^4.22.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "yup": "^1.2.0"
+  }
+}
