@@ -34,21 +34,21 @@ function MovimientosModal({ data, showModal }) {
                         <div className="row">
                             <div className="col-sm-6">
                                 <ul className="list-group">
-                            {
-                                entradas.map((value) => (
-                                    <li className="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
-                                        {value.ENT_FECHA}
-                                        <span className="badge bg-primary rounded-pill">{value.ENT_CANTIDAD}</span>
-                                    </li>
-                                ))
-                            }
-                        </ul>
+                                    {
+                                        entradas.map((value) => (
+                                            <li key={value.ENT_ID + '/' + value.ENT_FECHA} className="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
+                                                {value.ENT_FECHA}
+                                                <span className="badge bg-primary rounded-pill">{value.ENT_CANTIDAD}</span>
+                                            </li>
+                                        ))
+                                    }
+                                </ul>
                             </div>
                             <div className="col-sm-6">
                                 <ul className="list-group">
                                     {
                                         salidas.map((value) => (
-                                            <li className="list-group-item list-group-item-danger d-inline-flex justify-content-around align-items-center">
+                                            <li key={value.SAL_ID + '/' + value.SAL_FECHA} className="list-group-item list-group-item-danger d-inline-flex justify-content-around align-items-center">
                                                 {value.SAL_FECHA}
                                                 <span className="badge bg-primary rounded-pill">{value.SAL_CANTIDAD}</span>
                                             </li>
@@ -57,8 +57,8 @@ function MovimientosModal({ data, showModal }) {
                                 </ul>
                             </div>
                         </div>
-                        
-                        
+
+
                     </div>
                 </div>
             </div>
