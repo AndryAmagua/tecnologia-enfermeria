@@ -6,35 +6,56 @@ function ReservasTable({ data, onEdit }) {
     const columns = [
         {
             name: 'TIR_NOMBRE',
-            label: "Tipo de solicitud",
+            label: "TIPO DE SOLICITUD",
         },
         {
             name: 'SOL_SOLICITANTE',
-            label: "Solicitante",
+            label: "SOLICITANTE",
         },
         {
             name: 'SOL_CATEDRA',
-            label: "Cátedra",
+            label: "CÁTEDRA",
+        },
+        {
+            name: 'LAB_NOMBRE',
+            label: "ESPACIO DE RESERVA ",
         },
         {
             name: 'SOL_GUIA',
-            label: "Guía",
+            label: "GUÍA",
         },
         {
             name: 'SOL_FECHA',
-            label: "Fecha",
+            label: "FECHA",
+        },
+        {
+            name: 'horario',
+            label: "HORA INICIO Y FIN",
+            options: {
+                filter: false,
+                sort: false,
+                customBodyRender: (value, tableMeta) => {
+                    const dataIndex = tableMeta.rowIndex
+                    const row = data[dataIndex]
+                    return (
+                        <>
+                            {row['SOL_HORA_INGRESO']} - {row['SOL_HORA_SALIDA']}
+                        </>
+                    )
+                }
+            }
         },
         {
             name: 'PEA_NOMBRE',
-            label: "Periodo académico",
+            label: "PERIODO ACADÉMICO",
         },
         {
             name: 'SOL_ESTADO',
-            label: "Estado",
+            label: "ESTADO",
         },
         {
             name: 'actions',
-            label: "Acciones",
+            label: "ACCIONES",
             options: {
                 filter: false,
                 sort: false,
@@ -57,8 +78,7 @@ function ReservasTable({ data, onEdit }) {
 
     const options = {
         filterType: 'dropdown',
-        responsive: "standard",
-        download: false,
+        responsive: "simple",
         print: false,
         viewColumns: false,
         selectableRows: 'none',
