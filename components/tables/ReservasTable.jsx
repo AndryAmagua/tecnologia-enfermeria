@@ -13,7 +13,7 @@ function ReservasTable({ data, onEdit }) {
             label: "SOLICITANTE",
         },
         {
-            name: 'SOL_CATEDRA',
+            name: 'CAT_NOMBRE',
             label: "CÁTEDRA",
         },
         {

@@ -56,10 +56,21 @@ function ReservaModal({ data, showModal, funcion }) {
                                             <fieldset disabled={true}>
                                                 <div className="input-group">
                                                     <span className="input-group-text">Catedra</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.SOL_CATEDRA} />
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.CAT_NOMBRE} />
                                                 </div>
                                             </fieldset>
                                         </div>
+                                        {
+                                            data.MOT_DESCRIPCION != "" &&
+                                            <div className="form-group mt-4">
+                                                <fieldset disabled={true}>
+                                                    <div className="input-group">
+                                                        <span className="input-group-text">Catedra</span>
+                                                        <input className="form-control" id="disabledInput" type="text" placeholder={data.MOT_DESCRIPCION} />
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        }
                                         <div className="form-group mt-4">
                                             <fieldset disabled={true}>
                                                 <div className="input-group">
