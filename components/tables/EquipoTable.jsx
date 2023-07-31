@@ -7,64 +7,57 @@ function EquipoTable({ data, onEdit, onDelete }) {
     const columns = [
         {
             name: 'EQU_CODIGO_SAP',
-            label: "Código SAP",
+            label: "CÓDIGO SAP",
             options: {
                 filter: false
             }
         },
         {
             name: 'EQU_NOMBRE',
-            label: "Nombre",
+            label: "NOMBRE",
             options: {
                 filter: false
             }
         },
         {
             name: 'EQU_CANTIDAD_PIEZAS',
-            label: "Piezas",
+            label: "PIEZAS",
             options: {
                 filter: false
             }
         },
         {
             name: 'EQU_ESPECIFICACIONES',
-            label: "Especificaciones",
+            label: "ESPECIFICACIONES",
             options: {
                 filter: false
             }
         },
         {
             name: 'EQU_MARCA',
-            label: "Marca",
+            label: "MARCA",
             options: {
                 filter: false
             }
         },
         {
             name: 'EQU_FECHA_MANTENIMIENTO',
-            label: "Mantenimiento",
+            label: "MANTENIMIENTO",
             options: {
                 filter: false
             }
         },
         {
             name: 'TIP_NOMBRE',
-            label: "Categoría",
+            label: "CATEGORÍA",
         },
         {
             name: 'LAB_NOMBRE',
-            label: "Ubicacion",
-        },
-        {
-            name: 'EQU_DISPONIBILIDAD',
-            label: "Disponibilidad",
-            options: {
-                filter: false
-            }
+            label: "UBICACIÓN",
         },
         {
             name: 'actions',
-            label: "Acciones",
+            label: "ACCIONES",
             options: {
                 filter: false,
                 customBodyRender: (value, tableMeta) => {
@@ -99,6 +92,8 @@ function EquipoTable({ data, onEdit, onDelete }) {
         viewColumns: false,
         selectableRows: 'none',
         sort: false,
+        rowsPerPage: 5,
+        rowsPerPageOptions: [5, 10, 20],
         textLabels: {
             body: {
                 noMatch: "No hay registros que mostrar",
@@ -115,7 +110,7 @@ function EquipoTable({ data, onEdit, onDelete }) {
     return (
         <div className="table-responsive-sm mt-3">
             <MUIDataTable
-                title={"Lista de equipos biomedicos"}
+                title={"Catálogo de equipos biomedicos"}
                 data={data}
                 columns={columns}
                 options={options}

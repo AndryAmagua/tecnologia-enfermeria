@@ -18,7 +18,7 @@ function EquipoModal({ data, showModal, funcion }) {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title">Fomulario equipos</h5>
+                        <h5 className="modal-title">Fomulario de equipos biomédicos</h5>
                         <button className="btn-close" onClick={() => showModal(false)}>
                             <span aria-hidden={true}></span>
                         </button>
@@ -38,9 +38,9 @@ function EquipoModal({ data, showModal, funcion }) {
                             >
                                 {({ isSubmitting }) => (
                                     <Form>
-                                        <div className="form-group">
+                                        {/* <div className="form-group">
                                             <Field className="form-control" type="text" name="id" disabled={true} />
-                                        </div>
+                                        </div> */}
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Codigo</label>
                                             <Field className="form-control" type="text" name="codigo" />

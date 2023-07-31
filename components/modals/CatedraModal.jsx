@@ -31,9 +31,9 @@ function CatedraModal({ data, showModal, funcion }) {
                             >
                                 {({ isSubmitting }) => (
                                     <Form>
-                                        <div className="form-group">
+                                        {/* <div className="form-group">
                                             <Field className="form-control" type="text" name="id" disabled={true} />
-                                        </div>
+                                        </div> */}
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Cátedra</label>
                                             <Field className="form-control" type="nombre" name="nombre" />

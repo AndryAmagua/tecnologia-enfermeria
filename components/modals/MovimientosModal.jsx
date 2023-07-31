@@ -25,7 +25,7 @@ function MovimientosModal({ data, showModal }) {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title">Fomulario laboratorio</h5>
+                        <h5 className="modal-title">Lista de movimientos</h5>
                         <button className="btn-close" onClick={() => showModal(false)}>
                             <span aria-hidden={true}></span>
                         </button>

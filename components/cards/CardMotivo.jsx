@@ -108,11 +108,12 @@ function CardMotivo() {
                 <MotivoModal data={formData} showModal={setModalEdit} funcion={editMotivo} />
             }
             <div className="card text-white bg-primary mb-3">
-                <div className="card-header">MOTIVOS</div>
-                <div className="card-body">
-                    <button type="button" className="btn btn-light btn-sm mb-3" onClick={() => setModalCreate(true)}>
+                <div className="card-header">
+                    <button type="button" className="btn btn-light btn-sm my-3" onClick={() => setModalCreate(true)}>
                         Agregar
                     </button>
+                </div>
+                <div className="card-body">
                     <MotivoTable data={data} onEdit={openEdit} onDelete={deleteMotivo} />
                 </div>
             </div>

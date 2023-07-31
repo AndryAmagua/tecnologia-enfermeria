@@ -7,11 +7,11 @@ function CatedraTable({ data, onEdit, onDelete }) {
     const columns = [
         {
             name: 'CAT_NOMBRE',
-            label: "Catedra",
+            label: "CÁTEDRA",
         },
         {
             name: 'actions',
-            label: "Acciones",
+            label: "ACCIONES",
             options: {
                 customBodyRender: (value, tableMeta) => {
                     return (
@@ -39,15 +39,16 @@ function CatedraTable({ data, onEdit, onDelete }) {
 
     const options = {
         filterType: 'dropdown',
-        responsive: "standard",
+        responsive: "vertical",
         download: false,
         filter: false,
         print: false,
         search: false,
         viewColumns: false,
         selectableRows: 'none',
-        pagination: false,
         sort: false,
+        rowsPerPage: 5,
+        rowsPerPageOptions: [5, 10, 20],
         textLabels: {
             body: {
                 noMatch: "No hay registros que mostrar",

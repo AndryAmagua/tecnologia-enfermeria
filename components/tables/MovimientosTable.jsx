@@ -6,23 +6,23 @@ function MovimientosTable({ data, onView }) {
     const columns = [
         {
             name: 'INS_NOMBRE',
-            label: "Insumo",
+            label: "INSUMO",
         },
         {
             name: 'MOI_ENTRADAS_TOTALES',
-            label: "Entradas totales",
+            label: "ENTRADAS TOTALES",
         },
         {
             name: 'MOI_SALIDAS_TOTALES',
-            label: "Salidas totales",
+            label: "SALIDAS TOTALES",
         },
         {
             name: 'MOI_EXISTENCIAS',
-            label: "Existencias",
+            label: "EXISTENCIAS",
         },
         {
             name: 'actions',
-            label: "Acciones",
+            label: "ACCIONES",
             options: {
                 customBodyRender: (value, tableMeta) => {
                     return (
@@ -48,6 +48,8 @@ function MovimientosTable({ data, onView }) {
         filter: false,
         selectableRows: 'none',
         sort: false,
+        rowsPerPage: 5,
+        rowsPerPageOptions: [5, 10, 20],
         textLabels: {
             body: {
                 noMatch: "No hay registros que mostrar",
@@ -64,7 +66,7 @@ function MovimientosTable({ data, onView }) {
     return (
         <div className="table-responsive-sm mt-3">
             <MUIDataTable
-                title={"Tabla de movimientos"}
+                title={"Índice de movimientos de insumos"}
                 data={data}
                 columns={columns}
                 options={options}

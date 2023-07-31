@@ -52,6 +52,26 @@ function ReservasTable({ data, onEdit }) {
         {
             name: 'SOL_ESTADO',
             label: "ESTADO",
+            options: {
+                filter: false,
+                sort: false,
+                customBodyRender: (value, tableMeta) => {
+                    const dataIndex = tableMeta.rowIndex
+                    const row = data[dataIndex]
+                    return (
+                        <>
+                            {
+                                value === 0 ?
+                                    <>PENDIENTE</>
+                                    : value === 1 ?
+                                        <>APROBADO</>
+                                        :
+                                        <>RECHAZADO</>
+                            }
+                        </>
+                    )
+                }
+            }
         },
         {
             name: 'actions',
@@ -78,10 +98,12 @@ function ReservasTable({ data, onEdit }) {
 
     const options = {
         filterType: 'dropdown',
-        responsive: "simple",
+        responsive: "vertical",
         print: false,
         viewColumns: false,
         selectableRows: 'none',
+        rowsPerPage: 5,
+        rowsPerPageOptions: [5, 10, 20],
         textLabels: {
             body: {
                 noMatch: "No hay registros que mostrar",
@@ -97,7 +119,7 @@ function ReservasTable({ data, onEdit }) {
 
     return (
         <MUIDataTable
-            title={"Solicitudes de reserva"}
+            title={"Lista de solicitudes de reservas internas"}
             data={data}
             columns={columns}
             options={options}

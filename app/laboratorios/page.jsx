@@ -94,7 +94,7 @@ function Laboratorios() {
 
   return (
     <div className="container-sm p-3">
-      <h1 style={{ textAlign: 'center' }}>Laboratorios y espacios</h1>
+      <h1 style={{ textAlign: 'center' }}>Administración de laboratorios y espacios</h1>
       {
         alertMessage.estado &&
         <Alert clase={alertMessage.clase} mensaje={alertMessage.msg} >

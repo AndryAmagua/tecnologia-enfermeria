@@ -7,19 +7,19 @@ function LaboratorioTable({ data, onEdit, onDelete }) {
     const columns = [
         {
             name: 'LAB_NOMBRE',
-            label: "Nombre de laboratorio",
+            label: "NOMBRE DE LABORATORIO",
         },
         {
             name: 'LAB_CAPACIDAD',
-            label: "Capacidad",
+            label: "CAPACIDAD",
         },
         {
             name: 'LAB_TIPO',
-            label: "Uso del área",
+            label: "USO DEL ÁREA",
         },
         {
             name: 'actions',
-            label: "Acciones",
+            label: "ACCIONES",
             options: {
                 sort: false,
                 customBodyRender: (value, tableMeta) => {
@@ -48,13 +48,15 @@ function LaboratorioTable({ data, onEdit, onDelete }) {
 
     const options = {
         filterType: 'dropdown',
-        responsive: "standard",
+        responsive: "vertical",
         download: false,
         filter: false,
         print: false,
         search: false,
         viewColumns: false,
         selectableRows: 'none',
+        rowsPerPage: 5,
+        rowsPerPageOptions: [5, 10, 20],
         textLabels: {
             body: {
                 noMatch: "No hay registros que mostrar",
@@ -70,7 +72,7 @@ function LaboratorioTable({ data, onEdit, onDelete }) {
 
     return (
         <MUIDataTable
-            title={"Lista laboratorios y espacios"}
+            title={"Catálogo de laboratorios y espacios"}
             data={data}
             columns={columns}
             options={options}

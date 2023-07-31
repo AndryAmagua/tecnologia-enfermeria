@@ -99,10 +99,12 @@ function ReservasExternasTable({ data, onEdit }) {
 
     const options = {
         filterType: 'dropdown',
-        responsive: "simple",
+        responsive: "vertical",
         print: false,
         viewColumns: false,
         selectableRows: 'none',
+        rowsPerPage: 5,
+        rowsPerPageOptions: [5, 10, 20],
         textLabels: {
             body: {
                 noMatch: "No hay registros que mostrar",
@@ -118,7 +120,7 @@ function ReservasExternasTable({ data, onEdit }) {
 
     return (
         <MUIDataTable
-            title={"Solicitudes de reserva"}
+            title={"Lista de solicitudes de reservas externas"}
             data={data}
             columns={columns}
             options={options}

@@ -108,11 +108,12 @@ function CardNivel() {
                 <NivelModal data={formData} showModal={setModalEdit} funcion={editNivel} />
             }
             <div className="card text-white bg-primary mb-3">
-                <div className="card-header">NIVELES</div>
-                <div className="card-body">
-                    <button type="button" className="btn btn-light btn-sm mb-3" onClick={() => setModalCreate(true)}>
+                <div className="card-header">
+                    <button type="button" className="btn btn-light btn-sm my-3" onClick={() => setModalCreate(true)}>
                         Agregar
                     </button>
+                </div>
+                <div className="card-body">
                     <NivelTable data={data} onEdit={openEdit} onDelete={deleteNivel} />
                 </div>
             </div>

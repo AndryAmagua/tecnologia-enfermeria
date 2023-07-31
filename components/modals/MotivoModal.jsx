@@ -31,9 +31,9 @@ function MotivoModal({ data, showModal, funcion }) {
                             >
                                 {({ isSubmitting }) => (
                                     <Form>
-                                        <div className="form-group">
+                                        {/* <div className="form-group">
                                             <Field className="form-control" type="text" name="id" disabled={true} />
-                                        </div>
+                                        </div> */}
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Descripción</label>
                                             <Field className="form-control" type="descripcion" name="descripcion" />

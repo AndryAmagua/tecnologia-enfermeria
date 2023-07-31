@@ -6,7 +6,7 @@ function PeriodoModal({ data, showModal, funcion }) {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title">Fomulario de paralelos de enfermería</h5>
+                        <h5 className="modal-title">Fomulario de periodos académicos</h5>
                         <button className="btn-close" onClick={() => showModal(false)}>
                             <span aria-hidden={true}></span>
                         </button>
@@ -34,9 +34,9 @@ function PeriodoModal({ data, showModal, funcion }) {
                             >
                                 {({ isSubmitting }) => (
                                     <Form>
-                                        <div className="form-group">
+                                        {/* <div className="form-group">
                                             <Field className="form-control" type="text" name="id" disabled={true} />
-                                        </div>
+                                        </div> */}
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Nombre periodo</label>
                                             <Field className="form-control" type="nombre" name="nombre" />

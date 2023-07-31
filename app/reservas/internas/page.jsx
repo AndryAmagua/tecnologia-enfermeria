@@ -12,7 +12,7 @@ function Reservas() {
 
     async function getReservas() {
         try {
-            const response = await fetch('api/reserva')
+            const response = await fetch('../api/reserva')
             const result = await response.json()
             setData(result.data)
         } catch (error) {
@@ -22,7 +22,7 @@ function Reservas() {
 
     async function editReserva(values) {
         try {
-            const response = await fetch('api/reserva', {
+            const response = await fetch('../api/reserva', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(values)
@@ -52,7 +52,7 @@ function Reservas() {
 
     return (
         <div className="container-sm p-3">
-            <h1 style={{ textAlign: 'center' }}>Administración de solicitudes</h1>
+            <h1 style={{ textAlign: 'center' }}>Administración de solicitudes internas</h1>
             {
                 alertMessage.estado &&
                 <Alert clase={alertMessage.clase} mensaje={alertMessage.msg} >

@@ -7,7 +7,7 @@ function ReservaExternaModal({ data, showModal, funcion }) {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title">Fomulario laboratorio</h5>
+                        <h5 className="modal-title">Fomulario de reserva externa</h5>
                         <button className="btn-close" onClick={() => showModal(false)}>
                             <span aria-hidden={true}></span>
                         </button>
@@ -40,9 +40,9 @@ function ReservaExternaModal({ data, showModal, funcion }) {
                             >
                                 {({ isSubmitting }) => (
                                     <Form>
-                                        <div className="form-group">
+                                        {/* <div className="form-group">
                                             <Field className="form-control" type="text" name="id" disabled={true} />
-                                        </div>
+                                        </div> */}
 
                                         <div className="form-group mt-4">
                                             <fieldset disabled={true}>

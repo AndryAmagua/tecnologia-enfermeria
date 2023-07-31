@@ -12,7 +12,7 @@ function ReservasExternas() {
 
     async function getReservas() {
         try {
-            const response = await fetch('api/reserva/externa')
+            const response = await fetch('../api/reserva/externa')
             const result = await response.json()
             setData(result.data)
         } catch (error) {
@@ -22,7 +22,7 @@ function ReservasExternas() {
 
     async function editReserva(values) {
         try {
-            const response = await fetch('api/reserva/externa', {
+            const response = await fetch('../api/reserva/externa' , {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(values)

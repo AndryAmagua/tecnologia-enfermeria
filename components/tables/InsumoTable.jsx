@@ -7,42 +7,42 @@ function InsumoTable({ data, onEdit, onDelete }) {
     const columns = [
         {
             name: 'INS_NOMBRE',
-            label: "Nombre",
+            label: "NOMBRE",
             options: {
                 filter: false
             }
         },
         {
             name: 'INS_DESCRIPCION',
-            label: "Descripción",
+            label: "DESCRIPCIÓN",
             options: {
                 filter: false
             }
         },
         {
             name: 'INS_UNIDAD_MEDIDA',
-            label: "Unidad de medida",
+            label: "UNIDAD DE MEDIDA",
             options: {
                 filter: false
             }
         },
         {
             name: 'INS_PRESENTACION',
-            label: "Presentación",
+            label: "PRESENTACIÓN",
             options: {
                 filter: false
             }
         },
         {
             name: 'INS_STOCK_MINIMO',
-            label: "Stock mínimo",
+            label: "STOCK MINIMO",
             options: {
                 filter: false
             }
         },
         {
             name: 'LAB_NOMBRE',
-            label: "Ubicacion",
+            label: "UBICACIÓN",
         },
         {
             name: 'actions',
@@ -81,6 +81,8 @@ function InsumoTable({ data, onEdit, onDelete }) {
         viewColumns: false,
         selectableRows: 'none',
         sort: false,
+        rowsPerPage: 5,
+        rowsPerPageOptions: [5, 10, 20],
         textLabels: {
             body: {
                 noMatch: "No hay registros que mostrar",
@@ -97,7 +99,7 @@ function InsumoTable({ data, onEdit, onDelete }) {
     return (
         <div className="table-responsive-sm mt-3">
             <MUIDataTable
-                title={"Lista de insumos"}
+                title={"Catálogo de insumos"}
                 data={data}
                 columns={columns}
                 options={options}

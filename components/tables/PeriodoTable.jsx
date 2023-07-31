@@ -7,15 +7,15 @@ function PeriodoTable({ data, onEdit, onDelete }) {
     const columns = [
         {
             name: 'PEA_CODIGO',
-            label: "Código",
+            label: "CÓDIGO",
         },
         {
             name: 'PEA_NOMBRE',
-            label: "Nombre",
+            label: "NOMBRE DE PERIODO",
         },
         {
             name: 'actions',
-            label: "Acciones",
+            label: "ACCIONES",
             options: {
                 customBodyRender: (value, tableMeta) => {
                     return (
@@ -43,14 +43,15 @@ function PeriodoTable({ data, onEdit, onDelete }) {
 
     const options = {
         filterType: 'dropdown',
-        responsive: "standard",
+        responsive: "vertical",
         download: false,
         filter: false,
         print: false,
         search: false,
         viewColumns: false,
         selectableRows: 'none',
-        pagination: false,
+        rowsPerPage: 5,
+        rowsPerPageOptions: [5, 10, 20],
         sort: false,
         textLabels: {
             body: {
