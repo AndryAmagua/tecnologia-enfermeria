@@ -31,7 +31,7 @@ function Parametros() {
                 </li>
             </ul>
             <div id="myTabContent" className="tab-content">
-                <div className="tab-pane fade show active p-3" id="carreras" role="tabpanel">
+                <div className="tab-pane fade p-3" id="carreras" role="tabpanel">
                     <CardCarrera />
                 </div>
                 <div className="tab-pane fade p-3" id="niveles" role="tabpanel">

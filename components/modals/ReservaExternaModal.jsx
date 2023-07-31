@@ -1,7 +1,7 @@
 "use client"
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
-function ReservaModal({ data, showModal, funcion }) {
+function ReservaExternaModal({ data, showModal, funcion }) {
     return (
         <div className="modal" style={{ display: 'block', backgroundColor: 'rgba(64, 64, 64, 0.5)' }}>
             <div className="modal-dialog">
@@ -15,7 +15,7 @@ function ReservaModal({ data, showModal, funcion }) {
                     <div className="modal-body">
                         <fieldset>
                             <Formik
-                                initialValues={{ id: data.SOL_ID, observacion: data.SOL_OBSERVACION || "", estado: (data.SOL_ESTADO.toString()) }}
+                                initialValues={{ id: data.SOE_ID, observacion: data.SOE_OBSERVACION || "", estado: (data.SOE_ESTADO.toString()) }}
                                 validate={values => {
                                     const errors = {}
                                     if (!values.estado) {
@@ -48,50 +48,31 @@ function ReservaModal({ data, showModal, funcion }) {
                                             <fieldset disabled={true}>
                                                 <div className="input-group">
                                                     <span className="input-group-text">Solicitante</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.SOL_SOLICITANTE} />
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.PER_NOMBRES + " " + data.PER_APELLIDOS} />
                                                 </div>
                                             </fieldset>
                                         </div>
                                         <div className="form-group mt-4">
                                             <fieldset disabled={true}>
                                                 <div className="input-group">
-                                                    <span className="input-group-text">Carrera</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.CAR_NOMBRE} />
+                                                    <span className="input-group-text">Institución</span>
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.PER_INSTITUCION} />
                                                 </div>
                                             </fieldset>
                                         </div>
                                         <div className="form-group mt-4">
                                             <fieldset disabled={true}>
                                                 <div className="input-group">
-                                                    <span className="input-group-text">Nivel y paralelo</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.NIV_NOMBRE + " " + data.PAR_NOMBRE} />
+                                                    <span className="input-group-text">N° asistentes</span>
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.SOE_ASISTENTES} />
                                                 </div>
                                             </fieldset>
                                         </div>
                                         <div className="form-group mt-4">
                                             <fieldset disabled={true}>
                                                 <div className="input-group">
-                                                    <span className="input-group-text">N° estudiantes</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.SOL_ESTUDIANTES} />
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                        {
-                                            data.MOT_DESCRIPCION != null &&
-                                            <div className="form-group mt-4">
-                                                <fieldset disabled={true}>
-                                                    <div className="input-group">
-                                                        <span className="input-group-text">Descripcion</span>
-                                                        <input className="form-control" id="disabledInput" type="text" placeholder={data.MOT_DESCRIPCION} />
-                                                    </div>
-                                                </fieldset>
-                                            </div>
-                                        }
-                                        <div className="form-group mt-4">
-                                            <fieldset disabled={true}>
-                                                <div className="input-group">
-                                                    <span className="input-group-text">N° Guia</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.SOL_GUIA} />
+                                                    <span className="input-group-text">Periodo académico</span>
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.PEA_NOMBRE} />
                                                 </div>
                                             </fieldset>
                                         </div>
@@ -133,4 +114,4 @@ function ReservaModal({ data, showModal, funcion }) {
     )
 }
 
-export default ReservaModal
+export default ReservaExternaModal
