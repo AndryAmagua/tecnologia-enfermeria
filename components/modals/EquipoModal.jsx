@@ -26,7 +26,7 @@ function EquipoModal({ data, showModal, funcion }) {
                     <div className="modal-body">
                         <fieldset>
                             <Formik
-                                initialValues={{ id: data.EQU_ID || 0, codigo: data.EQU_CODIGO_SAP || "", nombre: data.EQU_NOMBRE || "", cantidad: data.EQU_CANTIDAD_PIEZAS || 0, especificacion: data.EQU_ESPECIFICACIONES || "", marca: data.EQU_MARCA || "", mantenimiento: data.EQU_FECHA_MANTENIMIENTO || new Date().toISOString().substr(0, 10), categoriaID: data.TIP_ID || 0, laboratorioID: data.LAB_ID || 0 }}
+                                initialValues={{ id: data.EQU_ID || 0, codigo: data.EQU_CODIGO_SAP || "", nombre: data.EQU_NOMBRE || "", cantidad: data.EQU_CANTIDAD_PIEZAS || 0, especificacion: data.EQU_ESPECIFICACIONES || "", marca: data.EQU_MARCA || "", categoriaID: data.TIP_ID || 0, laboratorioID: data.LAB_ID || 0 }}
                                 validationSchema={validationSchema}
                                 onSubmit={(values, { setSubmitting }) => {
                                     setTimeout(() => {
@@ -65,11 +65,6 @@ function EquipoModal({ data, showModal, funcion }) {
                                             <label className="col-form-label mt-4" >Marca</label>
                                             <Field className="form-control" type="text" name="marca" />
                                             <ErrorMessage className='text-danger' name="marca" component="div" />
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-form-label mt-4" >Fecha de mantenimineto</label>
-                                            <Field className="form-control" type="date" name="mantenimiento" />
-                                            <ErrorMessage className='text-danger' name="mantenimiento" component="div" />
                                         </div>
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Categoría</label>

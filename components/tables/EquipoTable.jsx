@@ -41,13 +41,6 @@ function EquipoTable({ data, onEdit, onDelete }) {
             }
         },
         {
-            name: 'EQU_FECHA_MANTENIMIENTO',
-            label: "MANTENIMIENTO",
-            options: {
-                filter: false
-            }
-        },
-        {
             name: 'TIP_NOMBRE',
             label: "CATEGORÍA",
         },

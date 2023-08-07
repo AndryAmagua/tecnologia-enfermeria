@@ -23,14 +23,12 @@ function Equipos() {
         }
     }
 
-    async function createEquipo(equipo) {
+    async function createEquipo(values) {
         try {
             const response = await fetch('api/equipo', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    codigo: equipo.codigo, nombre: equipo.nombre, cantidad: equipo.cantidad, especificacion: equipo.especificacion, marca: equipo.marca, mantenimiento: equipo.mantenimiento, categoriaID: equipo.categoriaID, laboratorioID: equipo.laboratorioID
-                })
+                body: JSON.stringify(values)
             })
             const result = await response.json()
             setModalCreate(false)
@@ -45,14 +43,12 @@ function Equipos() {
         }
     }
 
-    async function editEquipo(equipo) {
+    async function editEquipo(values) {
         try {
             const response = await fetch('api/equipo', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    id: equipo.id, codigo: equipo.codigo, nombre: equipo.nombre, cantidad: equipo.cantidad, especificacion: equipo.especificacion, marca: equipo.marca, mantenimiento: equipo.mantenimiento, categoriaID: equipo.categoriaID, laboratorioID: equipo.laboratorioID
-                })
+                body: JSON.stringify(values)
             })
             const result = await response.json()
             setModalEdit(false)
