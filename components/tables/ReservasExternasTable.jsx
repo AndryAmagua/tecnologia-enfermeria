@@ -9,7 +9,6 @@ function ReservasExternasTable({ data, onEdit }) {
             label: "SOLICITANTE",
             options: {
                 filter: false,
-                sort: false,
                 customBodyRender: (value, tableMeta) => {
                     const dataIndex = tableMeta.rowIndex
                     const row = data[dataIndex]
@@ -38,7 +37,6 @@ function ReservasExternasTable({ data, onEdit }) {
             label: "HORA INICIO Y FIN",
             options: {
                 filter: false,
-                sort: false,
                 customBodyRender: (value, tableMeta) => {
                     const dataIndex = tableMeta.rowIndex
                     const row = data[dataIndex]
@@ -51,27 +49,11 @@ function ReservasExternasTable({ data, onEdit }) {
             }
         },
         {
-            name: 'SOE_ESTADO',
+            name: 'EST_NOMBRE',
             label: "ESTADO",
             options: {
                 filter: false,
                 sort: false,
-                customBodyRender: (value, tableMeta) => {
-                    const dataIndex = tableMeta.rowIndex
-                    const row = data[dataIndex]
-                    return (
-                        <>
-                            {
-                                value === 0 ?
-                                    <>PENDIENTE</>
-                                    : value === 1 ?
-                                        <>APROBADO</>
-                                        :
-                                        <>RECHAZADO</>
-                            }
-                        </>
-                    )
-                }
             }
         },
         {
@@ -79,7 +61,6 @@ function ReservasExternasTable({ data, onEdit }) {
             label: "ACCIONES",
             options: {
                 filter: false,
-                sort: false,
                 customBodyRender: (value, tableMeta) => {
                     return (
                         <>
@@ -101,6 +82,7 @@ function ReservasExternasTable({ data, onEdit }) {
         filterType: 'dropdown',
         responsive: "vertical",
         print: false,
+        sort: false,
         viewColumns: false,
         selectableRows: 'none',
         rowsPerPage: 5,

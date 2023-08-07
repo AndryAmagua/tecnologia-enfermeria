@@ -5,7 +5,7 @@ export async function GET(request) {
     const db = await openDB()
     if (db.estado === undefined) {
         db.connect()
-        const [rows, fields] = await db.query('SELECT A.SOE_ID, A.SOE_GUIA, A.SOE_ASISTENTES, A.SOE_FECHA, A.SOE_HORA_INGRESO, A.SOE_HORA_SALIDA, A.SOE_OBSERVACION, A.SOE_ESTADO, C.PER_NOMBRES, C.PER_APELLIDOS, C.PER_INSTITUCION, D.PEA_NOMBRE, E.LAB_NOMBRE FROM tbl_solicitud_externa AS A INNER JOIN tbl_personal_externo AS C ON A.PER_ID = C.PER_ID INNER JOIN tbl_periodo_academico AS D ON A.PEA_ID = D.PEA_ID INNER JOIN tbl_laboratorios AS E ON A.LAB_ID = E.LAB_ID ORDER BY A.SOE_ID DESC')
+        const [rows, fields] = await db.query('SELECT A.SOE_ID, A.SOE_GUIA, A.SOE_ASISTENTES, A.SOE_FECHA, A.SOE_HORA_INGRESO, A.SOE_HORA_SALIDA, A.SOE_OBSERVACION, B.EST_ID, B.EST_NOMBRE, C.PER_NOMBRES, C.PER_APELLIDOS, C.PER_INSTITUCION, D.PEA_NOMBRE, E.LAB_NOMBRE FROM tbl_solicitud_externa AS A INNER JOIN tbl_estado_solicitud AS B ON A.EST_ID = B.EST_ID INNER JOIN tbl_personal_externo AS C ON A.PER_ID = C.PER_ID INNER JOIN tbl_periodo_academico AS D ON A.PEA_ID = D.PEA_ID INNER JOIN tbl_laboratorios AS E ON A.LAB_ID = E.LAB_ID ORDER BY A.SOE_ID DESC')
         db.end()
         return NextResponse.json({ data: rows }, { status: 200 })
 
@@ -31,7 +31,7 @@ export async function PUT(request) {
     const db = await openDB()
     db.connect()
     const { estado, observacion, id } = await request.json()
-    const [result, fields] = await db.query('UPDATE tbl_solicitud_externa SET SOE_ESTADO = ?, SOE_OBSERVACION = ? WHERE SOE_ID = ?', [estado, observacion, id]);
+    const [result, fields] = await db.query('UPDATE tbl_solicitud_externa SET EST_ID = ?, SOE_OBSERVACION = ? WHERE SOE_ID = ?', [estado, observacion, id]);
     db.end()
     if (result.changedRows > 0) {
         return NextResponse.json({ msg: "Solicitud editada", estado: true }, { status: 202 })

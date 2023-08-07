@@ -33,7 +33,6 @@ function ReservasTable({ data, onEdit }) {
             label: "HORA INICIO Y FIN",
             options: {
                 filter: false,
-                sort: false,
                 customBodyRender: (value, tableMeta) => {
                     const dataIndex = tableMeta.rowIndex
                     const row = data[dataIndex]
@@ -50,27 +49,10 @@ function ReservasTable({ data, onEdit }) {
             label: "PERIODO ACADÉMICO",
         },
         {
-            name: 'SOL_ESTADO',
+            name: 'EST_NOMBRE',
             label: "ESTADO",
             options: {
                 filter: false,
-                sort: false,
-                customBodyRender: (value, tableMeta) => {
-                    const dataIndex = tableMeta.rowIndex
-                    const row = data[dataIndex]
-                    return (
-                        <>
-                            {
-                                value === 0 ?
-                                    <>PENDIENTE</>
-                                    : value === 1 ?
-                                        <>APROBADO</>
-                                        :
-                                        <>RECHAZADO</>
-                            }
-                        </>
-                    )
-                }
             }
         },
         {
@@ -78,7 +60,6 @@ function ReservasTable({ data, onEdit }) {
             label: "ACCIONES",
             options: {
                 filter: false,
-                sort: false,
                 customBodyRender: (value, tableMeta) => {
                     return (
                         <>
@@ -100,6 +81,7 @@ function ReservasTable({ data, onEdit }) {
         filterType: 'dropdown',
         responsive: "vertical",
         print: false,
+        sort: false,
         viewColumns: false,
         selectableRows: 'none',
         rowsPerPage: 5,

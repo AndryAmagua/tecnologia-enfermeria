@@ -15,13 +15,13 @@ function ReservaExternaModal({ data, showModal, funcion }) {
                     <div className="modal-body">
                         <fieldset>
                             <Formik
-                                initialValues={{ id: data.SOE_ID, observacion: data.SOE_OBSERVACION || "", estado: (data.SOE_ESTADO.toString()) }}
+                                initialValues={{ id: data.SOE_ID, observacion: data.SOE_OBSERVACION || "", estado: data.EST_ID.toString() }}
                                 validate={values => {
                                     const errors = {}
                                     if (!values.estado) {
                                         errors.estado = 'Seleccione un nuevo estado'
                                     }
-                                    if (values.estado == '2') {
+                                    if (values.estado == '3') {
                                         if (!values.observacion) {
                                             errors.observacion = 'Añada una breve descripción del motivo de rechazo'
                                         }
@@ -30,7 +30,7 @@ function ReservaExternaModal({ data, showModal, funcion }) {
                                 }}
                                 onSubmit={(values, { setSubmitting }) => {
                                     setTimeout(() => {
-                                        if (values.estado == '1') {
+                                        if (values.estado == '2') {
                                             values.observacion = ""
                                         }
                                         funcion(values)
@@ -85,13 +85,13 @@ function ReservaExternaModal({ data, showModal, funcion }) {
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Cambiar estado de solicitud</label>
                                             <div className="form-check">
-                                                <Field name="estado" type="radio" value={'1'} />
+                                                <Field name="estado" type="radio" value={'2'} />
                                                 <label className="form-check-label mx-2" for="optionsRadios1">
                                                     Aprobado
                                                 </label>
                                             </div>
                                             <div className="form-check">
-                                                <Field name="estado" type="radio" value={'2'} />
+                                                <Field name="estado" type="radio" value={'3'} />
                                                 <label className="form-check-label mx-2" for="optionsRadios1">
                                                     Rechazado
                                                 </label>
