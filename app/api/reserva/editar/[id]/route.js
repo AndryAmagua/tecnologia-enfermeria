@@ -1,3 +1,6 @@
+import { NextResponse } from 'next/server';
+import openDB from '@/config/db'
+
 export async function PUT(request, { params }) {
     const db = await openDB()
     db.connect()
