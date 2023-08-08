@@ -9,6 +9,7 @@ function ReservasExternasTable({ data, onEdit }) {
             label: "SOLICITANTE",
             options: {
                 filter: false,
+                download: false,
                 customBodyRender: (value, tableMeta) => {
                     const dataIndex = tableMeta.rowIndex
                     const row = data[dataIndex]
@@ -18,6 +19,38 @@ function ReservasExternasTable({ data, onEdit }) {
                         </>
                     )
                 }
+            }
+        },
+        {
+            name: 'PER_NOMBRES',
+            label: "NOMBRES",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
+            name: 'PER_APELLIDOS',
+            label: "APELLIDOS",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
+            name: 'PER_INSTITUCION',
+            label: "INSTITUCIÓN",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
+            name: 'SOE_ASISTENTES',
+            label: "CANTIDAD DE ASISTENTES",
+            options: {
+                filter: false,
+                display: false
             }
         },
         {
@@ -33,10 +66,27 @@ function ReservasExternasTable({ data, onEdit }) {
             label: "FECHA",
         },
         {
+            name: 'SOE_HORA_INGRESO',
+            label: "HORA ENTRADA",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
+            name: 'SOE_HORA_SALIDA',
+            label: "HORA SALIDA",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
             name: 'horario',
             label: "HORA INICIO Y FIN",
             options: {
                 filter: false,
+                download: false,
                 customBodyRender: (value, tableMeta) => {
                     const dataIndex = tableMeta.rowIndex
                     const row = data[dataIndex]
@@ -49,11 +99,18 @@ function ReservasExternasTable({ data, onEdit }) {
             }
         },
         {
+            name: 'PEA_NOMBRE',
+            label: "PERIODO ACADÉMICO",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
             name: 'EST_NOMBRE',
             label: "ESTADO",
             options: {
                 filter: false,
-                sort: false,
             }
         },
         {
@@ -61,6 +118,7 @@ function ReservasExternasTable({ data, onEdit }) {
             label: "ACCIONES",
             options: {
                 filter: false,
+                download: false,
                 customBodyRender: (value, tableMeta) => {
                     return (
                         <>

@@ -21,7 +21,6 @@ function LaboratorioTable({ data, onEdit, onDelete }) {
             name: 'actions',
             label: "ACCIONES",
             options: {
-                sort: false,
                 customBodyRender: (value, tableMeta) => {
                     return (
                         <>
@@ -53,6 +52,7 @@ function LaboratorioTable({ data, onEdit, onDelete }) {
         filter: false,
         print: false,
         search: false,
+        sort:false,
         viewColumns: false,
         selectableRows: 'none',
         rowsPerPage: 5,

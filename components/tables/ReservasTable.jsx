@@ -9,12 +9,52 @@ function ReservasTable({ data, onEdit }) {
             label: "TIPO DE SOLICITUD",
         },
         {
+            name: 'MOT_DESCRIPCION',
+            label: "MOTIVO DE RESERVA",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
             name: 'SOL_SOLICITANTE',
             label: "SOLICITANTE",
         },
         {
             name: 'CAT_NOMBRE',
             label: "CÁTEDRA",
+        },
+        {
+            name: 'CAR_NOMBRE',
+            label: "CARRERA",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
+            name: 'NIV_NOMBRE',
+            label: "NIVEL",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
+            name: 'PAR_NOMBRE',
+            label: "PARALELO",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
+            name: 'SOL_ESTUDIANTES',
+            label: "CANTIDAD DE ESTUDIANTES",
+            options: {
+                filter: false,
+                display: false
+            }
         },
         {
             name: 'LAB_NOMBRE',
@@ -29,9 +69,26 @@ function ReservasTable({ data, onEdit }) {
             label: "FECHA",
         },
         {
+            name: 'SOL_HORA_INGRESO',
+            label: "HORA ENTRADA",
+            options:{
+                filter: false,
+                display: false
+            }
+        },
+        {
+            name: 'SOL_HORA_SALIDA',
+            label: "HORA SALIDA",
+            options:{
+                filter: false,
+                display: false
+            }
+        },
+        {
             name: 'horario',
             label: "HORA INICIO Y FIN",
             options: {
+                download: false,
                 filter: false,
                 customBodyRender: (value, tableMeta) => {
                     const dataIndex = tableMeta.rowIndex
@@ -60,6 +117,7 @@ function ReservasTable({ data, onEdit }) {
             label: "ACCIONES",
             options: {
                 filter: false,
+                download: false,
                 customBodyRender: (value, tableMeta) => {
                     return (
                         <>
@@ -80,7 +138,6 @@ function ReservasTable({ data, onEdit }) {
     const options = {
         filterType: 'dropdown',
         responsive: "vertical",
-        print: false,
         sort: false,
         viewColumns: false,
         selectableRows: 'none',
