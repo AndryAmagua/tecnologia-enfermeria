@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
+import { encode } from "base-64"
 
 const handler = NextAuth({
     providers: [
@@ -10,8 +11,25 @@ const handler = NextAuth({
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
-                const user = { id: 1, fullname: "Andry Amagua", email: "aaamagua@pucesi.edu.ec" }
-                return user
+                const USER = process.env.AUTH_USER
+                const PASSW = process.env.AUTH_PASSW
+
+                const response = await fetch('https://api.pucesi.edu.ec/Web-Services/api/auth/user', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Basic ' + encode(USER + ':' + PASSW)
+                    },
+                    body: JSON.stringify({
+                        user: credentials.username,
+                        pass: credentials.password
+                    })
+                })
+                const result = await response.json()
+                if (result.value == false) {
+                    throw new Error(result.msg)
+                }
+                return result.data
             }
         })
     ],

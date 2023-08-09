@@ -45,7 +45,7 @@ function Navbar() {
                                     <Link className="dropdown-item" href="/parametros">Ajustes de parámetros</Link>
                                 </div>
                             </div>
-                            <button type="button" className="btn btn-primary disabled">Cuenta administrador</button>
+                            <button type="button" className="btn btn-primary disabled">{session.user.nombres + " " + session.user.apellidos}</button>
                         </div>
                     </div>
                 </div>
