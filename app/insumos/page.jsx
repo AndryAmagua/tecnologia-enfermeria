@@ -92,7 +92,7 @@ function Insumos() {
     }, [])
 
     return (
-        <div className="container-sm p-3">
+        <div className="container-sm p-3" style={{marginTop: '70px'}}>
             <h1 style={{ textAlign: 'center' }}>Administración de insumos</h1>
             {
                 alertMessage.estado &&

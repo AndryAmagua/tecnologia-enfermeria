@@ -34,6 +34,9 @@ function Login() {
                                 if (!values.user) {
                                     errors.user = 'Usuario requerido'
                                 }
+                                if (!values.password) {
+                                    errors.password = 'Contraseña requerida'
+                                }
                                 return errors
                             }}
                             onSubmit={async (values, { setSubmitting }) => {
@@ -45,9 +48,9 @@ function Login() {
                                 if (res?.error) {
                                     setMsg(res.error)
                                     setShow(true)
+                                } else {
+                                    if (res?.ok) router.push('/equipos')
                                 }
-
-                                if (res?.ok) router.push('/')
 
                                 setSubmitting(false)
                             }}
@@ -56,15 +59,15 @@ function Login() {
                                 <Form>
                                     <div className="form-group">
                                         <Field className="form-control" type="text" name="user" placeholder="usuario" />
-                                        <ErrorMessage className='text-danger' name="user" component="div" />
+                                        <ErrorMessage className='text-light' name="user" component="div" />
                                     </div>
                                     <div className="form-group mt-4">
                                         <Field className="form-control" type="password" name="password" placeholder="contraseña" />
-                                        <ErrorMessage className='text-danger' name="password" component="div" />
+                                        <ErrorMessage className='text-light' name="password" component="div" />
                                     </div>
                                     <div className="form-group mt-4">
                                         <button className="btn btn-primary" type="submit" disabled={isSubmitting}>
-                                            Guardar
+                                            INGRESAR
                                         </button>
                                     </div>
                                 </Form>

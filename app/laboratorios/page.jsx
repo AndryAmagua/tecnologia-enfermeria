@@ -93,7 +93,7 @@ function Laboratorios() {
   }, [])
 
   return (
-    <div className="container-sm p-3">
+    <div className="container-sm p-3" style={{marginTop: '70px'}}>
       <h1 style={{ textAlign: 'center' }}>Administración de laboratorios y espacios</h1>
       {
         alertMessage.estado &&

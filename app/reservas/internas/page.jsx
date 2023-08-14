@@ -51,7 +51,7 @@ function Reservas() {
     }, [])
 
     return (
-        <div className="container-sm p-3">
+        <div className="container-sm p-3" style={{marginTop: '70px'}}>
             <h1 style={{ textAlign: 'center' }}>Administración de solicitudes internas</h1>
             {
                 alertMessage.estado &&

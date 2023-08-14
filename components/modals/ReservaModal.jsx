@@ -81,7 +81,7 @@ function ReservaModal({ data, showModal, funcion }) {
                                             <div className="form-group mt-4">
                                                 <fieldset disabled={true}>
                                                     <div className="input-group">
-                                                        <span className="input-group-text">Descripcion</span>
+                                                        <span className="input-group-text">Motivo de reserva</span>
                                                         <input className="form-control" id="disabledInput" type="text" placeholder={data.MOT_DESCRIPCION} />
                                                     </div>
                                                 </fieldset>

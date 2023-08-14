@@ -1,89 +1,21 @@
-'use client'
-import MovimientosTable from '@/components/tables/MovimientosTable'
-import MovimientosModal from '@/components/modals/MovimientosModal'
-import AcordeonMoviminetos from '@/components/acordeones/AcordeonMoviminetos'
-import Alert from '@/components/Alert'
-import { useState, useEffect } from 'react'
+import Image from "next/image"
+import codigoQR from '@/public/QR-APK.png'
 
 export default function IndexPage() {
-  const [data, setData] = useState([])
-  const [alertMessage, setAlertMessage] = useState({ estado: false, clase: "", msg: "" })
-  const [showModal, setShowModal] = useState(false)
-  const [formData, setFormData] = useState({})
-
-  async function getMovimientos() {
-    try {
-      const response = await fetch('api/movimientos')
-      const result = await response.json()
-      setData(result.data)
-    } catch (error) {
-      setData([])
-    }
-  }
-
-  async function createEntrada(entrada) {
-    try {
-      const response = await fetch('api/movimientos/entradas', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ insumoID: entrada.insumoID, fecha: entrada.fecha, cantidad: entrada.cantidad })
-      })
-      const result = await response.json()
-      if (result.estado) {
-        setAlertMessage({ estado: true, clase: "alert alert-dismissible alert-success", msg: result.msg })
-      } else {
-        setAlertMessage({ estado: true, clase: "alert alert-dismissible alert-danger", msg: result.msg })
-      }
-      getMovimientos()
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  async function createSalida(salida) {
-    try {
-      const response = await fetch('api/movimientos/salidas', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ insumoID: salida.insumoID, fecha: salida.fecha, cantidad: salida.cantidad })
-      })
-      const result = await response.json()
-      if (result.estado) {
-        setAlertMessage({ estado: true, clase: "alert alert-dismissible alert-success", msg: result.msg })
-      } else {
-        setAlertMessage({ estado: true, clase: "alert alert-dismissible alert-danger", msg: result.msg })
-      }
-      getMovimientos()
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-
-  const openView = async (row) => {
-    setFormData(row)
-    setShowModal(true)
-  }
-
-  useEffect(() => {
-    getMovimientos()
-  }, [])
-
-  return (
-    <div className="container-sm p-3">
-      <h1 style={{ textAlign: 'center' }}>Movimientos de insumos</h1>
-      {
-        alertMessage.estado &&
-        <Alert clase={alertMessage.clase} mensaje={alertMessage.msg} >
-          <button type="button" className="btn-close" onClick={() => setAlertMessage({ ...alertMessage, estado: false })}></button>
-        </Alert>
-      }
-      {
-        showModal &&
-        <MovimientosModal data={formData} showModal={setShowModal} />
-      }
-      <AcordeonMoviminetos setEntrada={createEntrada} setSalida={createSalida} />
-      <MovimientosTable data={data} onView={openView} />
-    </div>
-  )
+    return (
+        <div className="d-flex align-items-center justify-content-center vh-100"
+            style={{ backgroundImage: 'url(https://p1.pxfuel.com/preview/1006/270/445/blue-water-shimmer-gradient-white-light.jpg)', backgroundSize: 'cover' }}
+        >
+            <div className="card m-3">
+                <h3 className="card-header">APK aplicación móvil</h3>
+                <div className="card-body">
+                    <h6 className="card-subtitle text-muted" style={{maxWidth: '300px'}}>Para utilizar la aplicación móvil en su dispositivo escanee el código QR o haga clic en el enlace </h6>
+                </div>
+                <Image src={codigoQR} width={200} height={200} className="rounded mx-auto d-block" alt="APP-PUCETEC" />
+                <div className="card-body">
+                    <a href="https://drive.google.com/file/d/1Sb391MmfGYnhjerGpjDG53VwGGVuNnig/view?usp=sharing" className="card-link" target="_blank">Link de descarga</a>
+                </div>
+            </div>
+        </div>
+    )
 }

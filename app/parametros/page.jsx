@@ -7,7 +7,7 @@ import CardMotivo from "@/components/cards/CardMotivo"
 
 function Parametros() {
     return (
-        <div className="container-sm p-3">
+        <div className="container-sm p-3" style={{marginTop: '70px'}}>
             <h1 style={{ textAlign: 'center' }}>Parámetros de solicitudes</h1>
 
             <ul className="nav nav-tabs" role="tablist">
