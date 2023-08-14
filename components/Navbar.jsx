@@ -17,7 +17,7 @@ function Navbar() {
                             <>
                                 <ul className="navbar-nav me-auto">
                                     <li className="nav-item">
-                                        <Link className="nav-link" href="/">Inventario</Link>
+                                        <Link className="nav-link" href="/movimientos">Movimientos</Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link className="nav-link" href="/insumos">Insumos</Link>
