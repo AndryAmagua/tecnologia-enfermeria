@@ -18,9 +18,9 @@ export async function POST(request) {
     const db = await openDB()
 
     db.connect()
-    const { insumoID, fecha, cantidad } = await request.json()
-    const [result, fields] = await db.query('INSERT INTO tbl_entradas (INS_ID, ENT_FECHA, ENT_CANTIDAD) VALUES (?, ?, ?)', [insumoID, fecha, cantidad])
-    await db.query('UPDATE tbl_movimientos_insumos SET MOI_ENTRADAS_TOTALES = MOI_ENTRADAS_TOTALES + ?, MOI_EXISTENCIAS = MOI_EXISTENCIAS + ? WHERE INS_ID = ?', [cantidad, cantidad, insumoID])
+    const { insumo_id, fecha, cantidad } = await request.json()
+    const [result, fields] = await db.query('INSERT INTO tbl_entradas (insumo_id, fecha, cantidad) VALUES (?, ?, ?)', [insumo_id, fecha, cantidad])
+    await db.query('UPDATE tbl_movimientos_insumos SET entradas = entradas + ?, existencias = existencias + ? WHERE insumo_id = ?', [cantidad, cantidad, insumo_id])
     db.end()
     if (result.affectedRows > 0) {
         return NextResponse.json({ msg: "Entrada registrada", estado: true }, { status: 201 })

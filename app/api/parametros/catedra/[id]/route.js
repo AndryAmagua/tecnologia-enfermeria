@@ -5,7 +5,7 @@ export async function DELETE(request, { params }) {
     const db = await openDB()
     db.connect()
     const id = await params.id
-    const [result, fields] = await db.query('UPDATE tbl_catedra SET CAT_ESTADO = 0 WHERE CAT_ID = ?', [id]);
+    const [result, fields] = await db.query('UPDATE tbl_asignatura SET estado = 0 WHERE asignatura_id = ?', [id]);
     db.end()
     if (result.changedRows > 0) {
         return NextResponse.json({ msg: "Cátedra eliminada", estado: true }, { status: 203 })

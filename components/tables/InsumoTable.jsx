@@ -6,42 +6,42 @@ import MUIDataTable from "mui-datatables"
 function InsumoTable({ data, onEdit, onDelete }) {
     const columns = [
         {
-            name: 'INS_NOMBRE',
+            name: 'nombre',
             label: "NOMBRE",
             options: {
                 filter: false
             }
         },
         {
-            name: 'INS_DESCRIPCION',
+            name: 'descripcion',
             label: "DESCRIPCIÓN",
             options: {
                 filter: false
             }
         },
         {
-            name: 'INS_UNIDAD_MEDIDA',
+            name: 'unidad_medida',
             label: "UNIDAD DE MEDIDA",
             options: {
                 filter: false
             }
         },
         {
-            name: 'INS_PRESENTACION',
+            name: 'presentacion',
             label: "PRESENTACIÓN",
             options: {
                 filter: false
             }
         },
         {
-            name: 'INS_STOCK_MINIMO',
+            name: 'stock_minimo',
             label: "STOCK MINIMO",
             options: {
                 filter: false
             }
         },
         {
-            name: 'LAB_NOMBRE',
+            name: 'area',
             label: "UBICACIÓN",
         },
         {
@@ -61,7 +61,7 @@ function InsumoTable({ data, onEdit, onDelete }) {
                             </button>
                             <button type="button" className="btn btn-outline-danger btn-sm mx-2" onClick={() => {
                                 const dataIndex = tableMeta.rowIndex
-                                const id = data[dataIndex].INS_ID
+                                const id = data[dataIndex].insumo_id
                                 onDelete(id)
                             }}>
                                 <Image src={deleteSVG} alt="SVG Delete" />

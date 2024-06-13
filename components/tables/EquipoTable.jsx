@@ -6,46 +6,46 @@ import MUIDataTable from "mui-datatables"
 function EquipoTable({ data, onEdit, onDelete }) {
     const columns = [
         {
-            name: 'EQU_CODIGO_SAP',
+            name: 'codigo_sap',
             label: "CÓDIGO SAP",
             options: {
                 filter: false
             }
         },
         {
-            name: 'EQU_NOMBRE',
+            name: 'nombre',
             label: "NOMBRE",
             options: {
                 filter: false
             }
         },
         {
-            name: 'EQU_CANTIDAD_PIEZAS',
+            name: 'cantidad_piezas',
             label: "PIEZAS",
             options: {
                 filter: false
             }
         },
         {
-            name: 'EQU_ESPECIFICACIONES',
+            name: 'especificaciones',
             label: "ESPECIFICACIONES",
             options: {
                 filter: false
             }
         },
         {
-            name: 'EQU_MARCA',
+            name: 'marca',
             label: "MARCA",
             options: {
                 filter: false
             }
         },
         {
-            name: 'TIP_NOMBRE',
+            name: 'categoria',
             label: "CATEGORÍA",
         },
         {
-            name: 'LAB_NOMBRE',
+            name: 'area',
             label: "UBICACIÓN",
         },
         {
@@ -65,7 +65,7 @@ function EquipoTable({ data, onEdit, onDelete }) {
                             </button>
                             <button type="button" className="btn btn-outline-danger btn-sm mx-2" onClick={() => {
                                 const dataIndex = tableMeta.rowIndex
-                                const id = data[dataIndex].EQU_ID
+                                const id = data[dataIndex].equipo_id
                                 onDelete(id)
                             }}>
                                 <Image src={deleteSVG} alt="SVG Delete" />

@@ -6,7 +6,6 @@ import Alert from '@/components/Alert'
 import { useState, useEffect } from 'react'
 
 function Equipos() {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL
     const [data, setData] = useState([])
     const [formData, setFormData] = useState({})
     const [alertMessage, setAlertMessage] = useState({ estado: false, clase: "", msg: "" })
@@ -93,7 +92,7 @@ function Equipos() {
     }, [])
 
     return (
-        <div className="container-sm p-3" style={{marginTop: '70px'}}>
+        <div className="container-sm p-3" style={{ marginTop: '70px' }}>
             <h1 style={{ textAlign: 'center' }}>Administración de equipos biomédicos</h1>
             <AcordeonCategorias />
             {

@@ -3,11 +3,15 @@ import editSVG from '@/public/edit.svg'
 import deleteSVG from '@/public/delete.svg'
 import MUIDataTable from "mui-datatables"
 
-function ParaleloTable({ data, onEdit, onDelete }) {
+function EjecucionTable({ data, onEdit, onDelete }) {
     const columns = [
         {
-            name: 'PAR_NOMBRE',
-            label: "PARALELO",
+            name: 'nombre',
+            label: "Etapa de la práctica",
+        },
+        {
+            name: 'carrera',
+            label: "Carrera"
         },
         {
             name: 'actions',
@@ -25,7 +29,7 @@ function ParaleloTable({ data, onEdit, onDelete }) {
                             </button>
                             <button type="button" className="btn btn-outline-danger btn-sm mx-2" onClick={() => {
                                 const dataIndex = tableMeta.rowIndex
-                                const id = data[dataIndex].PAR_ID
+                                const id = data[dataIndex].ejecucion_id
                                 onDelete(id)
                             }}>
                                 <Image src={deleteSVG} alt="SVG Delete" />
@@ -71,4 +75,4 @@ function ParaleloTable({ data, onEdit, onDelete }) {
     )
 }
 
-export default ParaleloTable
+export default EjecucionTable

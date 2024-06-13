@@ -6,8 +6,12 @@ import MUIDataTable from "mui-datatables"
 function CatedraTable({ data, onEdit, onDelete }) {
     const columns = [
         {
-            name: 'CAT_NOMBRE',
-            label: "CÁTEDRA",
+            name: 'nombre',
+            label: "Asignatura",
+        },
+        {
+            name: 'carrera',
+            label: "Carrera"
         },
         {
             name: 'actions',
@@ -25,7 +29,7 @@ function CatedraTable({ data, onEdit, onDelete }) {
                             </button>
                             <button type="button" className="btn btn-outline-danger btn-sm mx-2" onClick={() => {
                                 const dataIndex = tableMeta.rowIndex
-                                const id = data[dataIndex].CAT_ID
+                                const id = data[dataIndex].asignatura_id
                                 onDelete(id)
                             }}>
                                 <Image src={deleteSVG} alt="SVG Delete" />

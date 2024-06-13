@@ -1,20 +1,19 @@
 'use client'
-import NivelModal from '../modals/NivelModal'
-import NivelTable from '../tables/NivelTable'
+import EjecucionModal from '../modals/EjecucionModal'
+import EjecucionTable from '../tables/EjecucionTable'
 import Alert from '@/components/Alert'
 import { useState, useEffect } from 'react'
 
-function CardNivel() {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL
+function CardEjecucion() {
     const [formData, setFormData] = useState({})
     const [data, setData] = useState([])
     const [alertMessage, setAlertMessage] = useState({ estado: false, clase: "", msg: "" })
     const [modalCreate, setModalCreate] = useState(false)
     const [modalEdit, setModalEdit] = useState(false)
 
-    async function getNiveles() {
+    async function getEjecuciones() {
         try {
-            const response = await fetch('api/parametros/nivel')
+            const response = await fetch('api/parametros/ejecucion')
             const result = await response.json()
             setData(result.data)
         } catch (error) {
@@ -22,9 +21,9 @@ function CardNivel() {
         }
     }
 
-    async function createNivel(value) {
+    async function createEjecucion(value) {
         try {
-            const response = await fetch('api/parametros/nivel', {
+            const response = await fetch('api/parametros/ejecucion', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(value)
@@ -36,15 +35,15 @@ function CardNivel() {
             } else {
                 setAlertMessage({ estado: true, clase: "alert alert-dismissible alert-danger", msg: result.msg })
             }
-            getNiveles()
+            getEjecuciones()
         } catch (error) {
 
         }
     }
 
-    async function editNivel(values) {
+    async function editEjecucion(values) {
         try {
-            const response = await fetch('api/parametros/nivel', {
+            const response = await fetch('api/parametros/ejecucion', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(values)
@@ -56,17 +55,17 @@ function CardNivel() {
             } else {
                 setAlertMessage({ estado: true, clase: "alert alert-dismissible alert-danger", msg: result.msg })
             }
-            getNiveles()
+            getEjecuciones()
         } catch (error) {
             console.log(error)
         }
 
     }
 
-    async function deleteNivel(id) {
+    async function deleteEjecucion(id) {
         try {
             if (confirm("¿Está seguro de que desea eliminar?") == true) {
-                const response = await fetch('api/parametros/nivel/' + id, {
+                const response = await fetch('api/parametros/ejecucion/' + id, {
                     method: 'DELETE'
                 })
                 const result = await response.json()
@@ -75,7 +74,7 @@ function CardNivel() {
                 } else {
                     setAlertMessage({ estado: true, clase: "alert alert-dismissible alert-danger", msg: result.msg })
                 }
-                getNiveles()
+                getEjecuciones()
             }
         } catch (error) {
             console.log(error)
@@ -88,7 +87,7 @@ function CardNivel() {
     }
 
     useEffect(() => {
-        getNiveles()
+        getEjecuciones()
     }, [])
 
     return (
@@ -101,11 +100,11 @@ function CardNivel() {
             }
             {
                 modalCreate &&
-                <NivelModal data={[]} showModal={setModalCreate} funcion={createNivel} />
+                <EjecucionModal data={[]} showModal={setModalCreate} funcion={createEjecucion} />
             }
             {
                 modalEdit &&
-                <NivelModal data={formData} showModal={setModalEdit} funcion={editNivel} />
+                <EjecucionModal data={formData} showModal={setModalEdit} funcion={editEjecucion} />
             }
             <div className="card text-white bg-primary mb-3">
                 <div className="card-header">
@@ -114,11 +113,11 @@ function CardNivel() {
                     </button>
                 </div>
                 <div className="card-body">
-                    <NivelTable data={data} onEdit={openEdit} onDelete={deleteNivel} />
+                    <EjecucionTable data={data} onEdit={openEdit} onDelete={deleteEjecucion} />
                 </div>
             </div>
         </>
     )
 }
 
-export default CardNivel
+export default CardEjecucion

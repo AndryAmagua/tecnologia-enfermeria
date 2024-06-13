@@ -21,12 +21,12 @@ export default function Movimientos() {
     }
   }
 
-  async function createEntrada(entrada) {
+  async function createEntrada(values) {
     try {
       const response = await fetch('api/movimientos/entradas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ insumoID: entrada.insumoID, fecha: entrada.fecha, cantidad: entrada.cantidad })
+        body: JSON.stringify(values)
       })
       const result = await response.json()
       if (result.estado) {
@@ -40,12 +40,12 @@ export default function Movimientos() {
     }
   }
 
-  async function createSalida(salida) {
+  async function createSalida(values) {
     try {
       const response = await fetch('api/movimientos/salidas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ insumoID: salida.insumoID, fecha: salida.fecha, cantidad: salida.cantidad })
+        body: JSON.stringify(values)
       })
       const result = await response.json()
       if (result.estado) {
@@ -58,7 +58,6 @@ export default function Movimientos() {
       console.log(error)
     }
   }
-
 
   const openView = async (row) => {
     setFormData(row)
@@ -70,7 +69,7 @@ export default function Movimientos() {
   }, [])
 
   return (
-    <div className="container-sm p-3" style={{marginTop: '70px'}}>
+    <div className="container-sm p-3" style={{ marginTop: '70px' }}>
       <h1 style={{ textAlign: 'center' }}>Movimientos de insumos</h1>
       {
         alertMessage.estado &&

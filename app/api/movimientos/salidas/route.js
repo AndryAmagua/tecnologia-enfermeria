@@ -18,10 +18,10 @@ export async function POST(request) {
     const db = await openDB()
 
     db.connect()
-    const { insumoID, fecha, cantidad } = await request.json()
-    const [result, fields] = await db.query('UPDATE tbl_movimientos_insumos SET MOI_SALIDAS_TOTALES = CASE WHEN MOI_EXISTENCIAS >= ? THEN MOI_SALIDAS_TOTALES + ? ELSE MOI_SALIDAS_TOTALES END, MOI_EXISTENCIAS = CASE WHEN MOI_EXISTENCIAS >= ? THEN MOI_EXISTENCIAS - ? ELSE MOI_EXISTENCIAS END WHERE INS_ID = ?', [cantidad, cantidad, cantidad, cantidad, insumoID])
+    const { insumo_id, fecha, cantidad } = await request.json()
+    const [result, fields] = await db.query('UPDATE tbl_movimientos_insumos SET salidas = CASE WHEN existencias >= ? THEN salidas + ? ELSE salidas END, existencias = CASE WHEN existencias >= ? THEN existencias - ? ELSE existencias END WHERE insumo_id = ?', [cantidad, cantidad, cantidad, cantidad, insumo_id])
     if (result.changedRows > 0) {
-        const [rows, fields] = await db.query('INSERT INTO tbl_salidas (INS_ID, SAL_FECHA, SAL_CANTIDAD) VALUES (?, ?, ?)', [insumoID, fecha, cantidad])
+        const [rows, fields] = await db.query('INSERT INTO tbl_salidas (insumo_id, fecha, cantidad) VALUES (?, ?, ?)', [insumo_id, fecha, cantidad])
         db.end()
         if (rows.affectedRows > 0) {
             return NextResponse.json({ msg: "Salida registrada", estado: true }, { status: 201 })

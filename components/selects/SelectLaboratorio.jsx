@@ -2,7 +2,6 @@ import { Field } from 'formik'
 import { useState, useEffect } from 'react'
 
 function SelectLaboratorio() {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL
     const [data, setData] = useState([])
 
     async function getLaboratorios() {
@@ -20,11 +19,11 @@ function SelectLaboratorio() {
     }, [])
 
     return (
-        <Field className="form-control" name="laboratorioID" as="select">
-            <option value={0}>Seleccione un laboratorio</option>
+        <Field className="form-control" name="area_id" as="select">
+            <option value={0}>Seleccione un espacio de almacenamiento</option>
             {
                 data.map((value) => (
-                    <option key={value.LAB_ID} value={value.LAB_ID}>{value.LAB_NOMBRE}</option>
+                    <option key={value.area_id} value={value.area_id}>{value.nombre}</option>
                 ))
             }
         </Field>

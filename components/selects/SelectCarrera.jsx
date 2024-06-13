@@ -1,12 +1,12 @@
 import { Field } from 'formik'
 import { useState, useEffect } from 'react'
 
-function SelectCategoria() {
+function SelectCarrera() {
     const [data, setData] = useState([])
 
     async function getCategorias() {
         try {
-            const response = await fetch('api/equipo/categoria')
+            const response = await fetch('api/parametros/carrera')
             const result = await response.json()
             setData(result.data)
         } catch (error) {
@@ -20,15 +20,15 @@ function SelectCategoria() {
 
 
     return (
-        <Field className="form-control" name="categoria_id" as="select">
-            <option value={0}>Seleccione una categoría</option>
+        <Field className="form-control" name="carrera_id" as="select">
+            <option value={0}>Seleccione una carrera</option>
             {
                 data.map((value) => (
-                    <option key={value.categoria_id} value={value.categoria_id}>{value.nombre}</option>
+                    <option key={value.carrera_id} value={value.carrera_id}>{value.nombre}</option>
                 ))
             }
         </Field>
     )
 }
 
-export default SelectCategoria
+export default SelectCarrera

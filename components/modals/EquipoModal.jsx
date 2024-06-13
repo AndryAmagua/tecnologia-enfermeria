@@ -6,11 +6,11 @@ import * as Yup from 'yup'
 
 function EquipoModal({ data, showModal, funcion }) {
     const validationSchema = Yup.object({
-        codigo: Yup.number().typeError('Codigo SAP solo debe contener numeros'),
+        codigo_sap: Yup.number().typeError('Codigo SAP solo debe contener numeros'),
         nombre: Yup.string().required('El nombre de equipo es requerido'),
-        cantidad: Yup.number().required('Cantidad de piezas es requerido').min(1, 'Cantidad minima de piezas es 1'),
-        categoriaID: Yup.number().min(1, 'Seleccione una categoría'),
-        laboratorioID: Yup.number().min(1, 'Selecione una ubicación de almacenamiento')
+        cantidad_piezas: Yup.number().required('Cantidad de piezas es requerido').min(1, 'Cantidad minima de piezas es 1'),
+        categoria_id: Yup.number().min(1, 'Seleccione una categoría'),
+        area_id: Yup.number().min(1, 'Selecione una ubicación de almacenamiento')
     })
 
     return (
@@ -26,11 +26,10 @@ function EquipoModal({ data, showModal, funcion }) {
                     <div className="modal-body">
                         <fieldset>
                             <Formik
-                                initialValues={{ id: data.EQU_ID || 0, codigo: data.EQU_CODIGO_SAP || "", nombre: data.EQU_NOMBRE || "", cantidad: data.EQU_CANTIDAD_PIEZAS || 0, especificacion: data.EQU_ESPECIFICACIONES || "", marca: data.EQU_MARCA || "", categoriaID: data.TIP_ID || 0, laboratorioID: data.LAB_ID || 0 }}
+                                initialValues={{ equipo_id: data.equipo_id || 0, codigo_sap: data.codigo_sap || "", nombre: data.nombre || "", cantidad_piezas: data.cantidad_piezas || 0, especificaciones: data.especificaciones || "", marca: data.marca || "", categoria_id: data.categoria_id || 0, area_id: data.area_id || 0 }}
                                 validationSchema={validationSchema}
                                 onSubmit={(values, { setSubmitting }) => {
                                     setTimeout(() => {
-                                        values.mantenimiento = values.mantenimiento.substr(0, 10)
                                         funcion(values)
                                         setSubmitting(false)
                                     }, 2000)
@@ -43,8 +42,8 @@ function EquipoModal({ data, showModal, funcion }) {
                                         </div> */}
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Codigo</label>
-                                            <Field className="form-control" type="text" name="codigo" />
-                                            <ErrorMessage className='text-danger' name="codigo" component="div" />
+                                            <Field className="form-control" type="text" name="codigo_sap" />
+                                            <ErrorMessage className='text-danger' name="codigo_sap" component="div" />
                                         </div>
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Nombre</label>
@@ -53,13 +52,13 @@ function EquipoModal({ data, showModal, funcion }) {
                                         </div>
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Cantidad de piezas</label>
-                                            <Field className="form-control" type="number" min={0} name="cantidad" />
-                                            <ErrorMessage className='text-danger' name="cantidad" component="div" />
+                                            <Field className="form-control" type="number" min={0} name="cantidad_piezas" />
+                                            <ErrorMessage className='text-danger' name="cantidad_piezas" component="div" />
                                         </div>
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Especificaciones</label>
-                                            <Field as="textarea" name="especificacion" rows="5" cols="50" />
-                                            <ErrorMessage className='text-danger' name="especificacion" component="div" />
+                                            <Field as="textarea" name="especificaciones" rows="5" cols="50" />
+                                            <ErrorMessage className='text-danger' name="especificaciones" component="div" />
                                         </div>
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Marca</label>
@@ -69,12 +68,12 @@ function EquipoModal({ data, showModal, funcion }) {
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Categoría</label>
                                             <SelectCategoria />
-                                            <ErrorMessage className='text-danger' name="categoriaID" component="div" />
+                                            <ErrorMessage className='text-danger' name="categoria_id" component="div" />
                                         </div>
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Ubicación</label>
                                             <SelectLaboratorio />
-                                            <ErrorMessage className='text-danger' name="laboratorioID" component="div" />
+                                            <ErrorMessage className='text-danger' name="area_id" component="div" />
                                         </div>
                                         <div className="form-group mt-4">
                                             <button className="btn btn-primary" type="submit" disabled={isSubmitting}>

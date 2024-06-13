@@ -5,8 +5,8 @@ import MUIDataTable from "mui-datatables"
 function ReservasTable({ data, onEdit }) {
     const columns = [
         {
-            name: 'TIR_NOMBRE',
-            label: "TIPO DE SOLICITUD",
+            name: 'modalidad',
+            label: "MODALIDAD",
         },
         {
             name: 'MOT_DESCRIPCION',
@@ -17,23 +17,23 @@ function ReservasTable({ data, onEdit }) {
             }
         },
         {
-            name: 'SOL_SOLICITANTE',
+            name: 'solicitante',
             label: "SOLICITANTE",
         },
         {
-            name: 'CAT_NOMBRE',
-            label: "CÁTEDRA",
+            name: 'asignatura',
+            label: "ASIGNATURA",
         },
         {
-            name: 'CAR_NOMBRE',
-            label: "CARRERA",
+            name: 'area',
+            label: "ÁREA'",
             options: {
                 filter: false,
                 display: false
             }
         },
         {
-            name: 'NIV_NOMBRE',
+            name: 'nivel',
             label: "NIVEL",
             options: {
                 filter: false,
@@ -41,7 +41,7 @@ function ReservasTable({ data, onEdit }) {
             }
         },
         {
-            name: 'PAR_NOMBRE',
+            name: 'paralelo',
             label: "PARALELO",
             options: {
                 filter: false,
@@ -49,37 +49,21 @@ function ReservasTable({ data, onEdit }) {
             }
         },
         {
-            name: 'SOL_ESTUDIANTES',
-            label: "CANTIDAD DE ESTUDIANTES",
+            name: 'fecha',
+            label: "FECHA",
+        },
+        {
+            name: 'horaInicio',
+            label: "HORA INICIO",
             options: {
                 filter: false,
                 display: false
             }
         },
         {
-            name: 'LAB_NOMBRE',
-            label: "ESPACIO DE RESERVA ",
-        },
-        {
-            name: 'SOL_GUIA',
-            label: "GUÍA",
-        },
-        {
-            name: 'SOL_FECHA',
-            label: "FECHA",
-        },
-        {
-            name: 'SOL_HORA_INGRESO',
-            label: "HORA ENTRADA",
-            options:{
-                filter: false,
-                display: false
-            }
-        },
-        {
-            name: 'SOL_HORA_SALIDA',
-            label: "HORA SALIDA",
-            options:{
+            name: 'horaFin',
+            label: "HORA FIN",
+            options: {
                 filter: false,
                 display: false
             }
@@ -95,18 +79,22 @@ function ReservasTable({ data, onEdit }) {
                     const row = data[dataIndex]
                     return (
                         <>
-                            {row['SOL_HORA_INGRESO']} - {row['SOL_HORA_SALIDA']}
+                            {row['horaInicio']} - {row['horaFin']}
                         </>
                     )
                 }
             }
         },
         {
-            name: 'PEA_NOMBRE',
-            label: "PERIODO ACADÉMICO",
+            name: 'temaGuia',
+            label: "TEMA Y N° GUIA",
         },
         {
-            name: 'EST_NOMBRE',
+            name: 'ejecucion',
+            label: "ETAPA DE PRÁCTICA",
+        },
+        {
+            name: 'estado',
             label: "ESTADO",
             options: {
                 filter: false,

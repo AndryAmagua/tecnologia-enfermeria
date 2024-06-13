@@ -5,8 +5,12 @@ import * as Yup from 'yup'
 
 function InsumoModal({ data, showModal, funcion }) {
     const validationSchema = Yup.object({
-        nombre: Yup.string().required('El nombre de equipo es requerido'),
-        laboratorioID: Yup.number().min(1, 'Selecione una ubicacion de almacenamiento')
+        nombre: Yup.string().required('Campo obligatorio'),
+        descripcion: Yup.string().required('Campo obligatorio'),
+        unidad_medida: Yup.string().required('Campo obligatorio'),
+        presentacion: Yup.string().required('Campo obligatorio'),
+        stock_minimo: Yup.number().min(1, 'Campo obligatorio'),
+        area_id: Yup.number().min(1, 'Selecione una ubicacion de almacenamiento')
     })
 
     return (
@@ -22,7 +26,7 @@ function InsumoModal({ data, showModal, funcion }) {
                     <div className="modal-body">
                         <fieldset>
                             <Formik
-                                initialValues={{ id: data.INS_ID || 0, nombre: data.INS_NOMBRE || "", descripcion: data.INS_DESCRIPCION || "", unidad: data.INS_UNIDAD_MEDIDA || "", presentacion: data.INS_PRESENTACION || "", stockMinimo: data.INS_STOCK_MINIMO || 0, laboratorioID: data.LAB_ID || 0 }}
+                                initialValues={{ insumo_id: data.insumo_id || 0, nombre: data.nombre || "", descripcion: data.descripcion || "", unidad_medida: data.unidad_medida || "", presentacion: data.presentacion || "", stock_minimo: data.stock_minimo || 0, area_id: data.area_id || 0 }}
                                 validationSchema={validationSchema}
                                 onSubmit={(values, { setSubmitting }) => {
                                     setTimeout(() => {
@@ -47,9 +51,9 @@ function InsumoModal({ data, showModal, funcion }) {
                                             <ErrorMessage className='text-danger' name="descripcion" component="div" />
                                         </div>
                                         <div className="form-group">
-                                            <label className="col-form-label mt-4" >Unidad</label>
-                                            <Field className="form-control" type="text" name="unidad" />
-                                            <ErrorMessage className='text-danger' name="unidad" component="div" />
+                                            <label className="col-form-label mt-4" >Unidad de medida</label>
+                                            <Field className="form-control" type="text" name="unidad_medida" />
+                                            <ErrorMessage className='text-danger' name="unidad_medida" component="div" />
                                         </div>
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Presentación</label>
@@ -58,13 +62,13 @@ function InsumoModal({ data, showModal, funcion }) {
                                         </div>
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Stock minimo</label>
-                                            <Field className="form-control" type="number" min={0} name="stockMinimo" />
-                                            <ErrorMessage className='text-danger' name="stockMinimo" component="div" />
+                                            <Field className="form-control" type="number" min={0} name="stock_minimo" />
+                                            <ErrorMessage className='text-danger' name="stock_minimo" component="div" />
                                         </div>
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Ubicación</label>
                                             <SelectLaboratorio />
-                                            <ErrorMessage className='text-danger' name="laboratorioID" component="div" />
+                                            <ErrorMessage className='text-danger' name="area_id" component="div" />
                                         </div>
                                         <div className="form-group mt-4">
                                             <button className="btn btn-primary" type="submit" disabled={isSubmitting}>

@@ -10,7 +10,6 @@ function Insumos() {
     const [alertMessage, setAlertMessage] = useState({ estado: false, clase: "", msg: "" })
     const [modalEdit, setModalEdit] = useState(false)
     const [modalCreate, setModalCreate] = useState(false)
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
     async function getInsumos() {
         try {
@@ -22,12 +21,12 @@ function Insumos() {
         }
     }
 
-    async function createInsumo(insumo) {
+    async function createInsumo(values) {
         try {
             const response = await fetch('api/insumo', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ nombre: insumo.nombre, descripcion: insumo.descripcion, unidad: insumo.unidad, presentacion: insumo.presentacion, stockMinimo: insumo.stockMinimo, laboratorioID: insumo.laboratorioID })
+                body: JSON.stringify(values)
             })
             const result = await response.json()
             setModalCreate(false)
@@ -42,12 +41,12 @@ function Insumos() {
         }
     }
 
-    async function editInsumo(insumo) {
+    async function editInsumo(values) {
         try {
             const response = await fetch('api/insumo', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ nombre: insumo.nombre, descripcion: insumo.descripcion, unidad: insumo.unidad, presentacion: insumo.presentacion, stockMinimo: insumo.stockMinimo, laboratorioID: insumo.laboratorioID, id: insumo.id })
+                body: JSON.stringify(values)
             })
             const result = await response.json()
             setModalEdit(false)
@@ -92,7 +91,7 @@ function Insumos() {
     }, [])
 
     return (
-        <div className="container-sm p-3" style={{marginTop: '70px'}}>
+        <div className="container-sm p-3" style={{ marginTop: '70px' }}>
             <h1 style={{ textAlign: 'center' }}>Administración de insumos</h1>
             {
                 alertMessage.estado &&

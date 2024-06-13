@@ -20,11 +20,11 @@ function SelectInsumo() {
     }, [])
 
     return (
-        <Field className="form-control" name="insumoID" as="select">
+        <Field className="form-control" name="insumo_id" as="select">
             <option value={0}>Seleccione un insumo</option>
             {
                 data.map((value) => (
-                    <option key={value.INS_ID} value={value.INS_ID}>{value.INS_NOMBRE}</option>
+                    <option key={value.insumo_id} value={value.insumo_id}>{value.nombre}</option>
                 ))
             }
         </Field>

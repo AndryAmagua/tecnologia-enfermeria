@@ -6,8 +6,16 @@ import MUIDataTable from "mui-datatables"
 function CarreraTable({ data, onEdit, onDelete }) {
     const columns = [
         {
-            name: 'CAR_NOMBRE',
-            label: "CARRERA",
+            name: 'nombre',
+            label: "Carrera",
+        },
+        {
+            name: 'niveles',
+            label: "Cant. niveles",
+        },
+        {
+            name: 'paralelos',
+            label: "Cant. paralelos",
         },
         {
             name: 'actions',
@@ -25,7 +33,7 @@ function CarreraTable({ data, onEdit, onDelete }) {
                             </button>
                             <button type="button" className="btn btn-outline-danger btn-sm mx-2" onClick={() => {
                                 const dataIndex = tableMeta.rowIndex
-                                const id = data[dataIndex].CAR_ID
+                                const id = data[dataIndex].carrera_id
                                 onDelete(id)
                             }}>
                                 <Image src={deleteSVG} alt="SVG Delete" />

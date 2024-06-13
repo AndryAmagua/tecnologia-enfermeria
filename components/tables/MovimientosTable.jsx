@@ -5,19 +5,19 @@ import MUIDataTable from "mui-datatables"
 function MovimientosTable({ data, onView }) {
     const columns = [
         {
-            name: 'INS_NOMBRE',
+            name: 'insumo',
             label: "INSUMO",
         },
         {
-            name: 'MOI_ENTRADAS_TOTALES',
+            name: 'entradas',
             label: "ENTRADAS TOTALES",
         },
         {
-            name: 'MOI_SALIDAS_TOTALES',
+            name: 'salidas',
             label: "SALIDAS TOTALES",
         },
         {
-            name: 'MOI_EXISTENCIAS',
+            name: 'existencias',
             label: "EXISTENCIAS",
         },
         {
@@ -61,6 +61,9 @@ function MovimientosTable({ data, onView }) {
                 displayRows: "de",
             }
         }
+        // onDownload: (buildHead, buildBody, columns, data) => {
+        //     return (buildBody(data))
+        // },
     }
 
     return (

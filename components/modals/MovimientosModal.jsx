@@ -7,7 +7,7 @@ function MovimientosModal({ data, showModal }) {
 
     async function getMovimientos() {
         try {
-            const response = await fetch('api/movimientos/' + data.INS_ID)
+            const response = await fetch('api/movimientos/' + data.insumo_id)
             const result = await response.json()
             setEntradas(result.data.entradas)
             setSalidas(result.data.salidas)
@@ -36,9 +36,9 @@ function MovimientosModal({ data, showModal }) {
                                 <ul className="list-group">
                                     {
                                         entradas.map((value) => (
-                                            <li key={value.ENT_ID + '/' + value.ENT_FECHA} className="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
-                                                {value.ENT_FECHA}
-                                                <span className="badge bg-primary rounded-pill">{value.ENT_CANTIDAD}</span>
+                                            <li key={value.entrada_id + '/' + value.fecha} className="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
+                                                {value.fecha}
+                                                <span className="badge bg-primary rounded-pill">{value.cantidad}</span>
                                             </li>
                                         ))
                                     }
@@ -48,9 +48,9 @@ function MovimientosModal({ data, showModal }) {
                                 <ul className="list-group">
                                     {
                                         salidas.map((value) => (
-                                            <li key={value.SAL_ID + '/' + value.SAL_FECHA} className="list-group-item list-group-item-danger d-inline-flex justify-content-around align-items-center">
-                                                {value.SAL_FECHA}
-                                                <span className="badge bg-primary rounded-pill">{value.SAL_CANTIDAD}</span>
+                                            <li key={value.salida_id + '/' + value.fecha} className="list-group-item list-group-item-danger d-inline-flex justify-content-around align-items-center">
+                                                {value.fecha}
+                                                <span className="badge bg-primary rounded-pill">{value.cantidad}</span>
                                             </li>
                                         ))
                                     }

@@ -10,7 +10,6 @@ function Laboratorios() {
   const [alertMessage, setAlertMessage] = useState({ estado: false, clase: "", msg: "" })
   const [modalEdit, setModalEdit] = useState(false)
   const [modalCreate, setModalCreate] = useState(false)
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
   async function getLaboratorios() {
     try {
@@ -93,8 +92,8 @@ function Laboratorios() {
   }, [])
 
   return (
-    <div className="container-sm p-3" style={{marginTop: '70px'}}>
-      <h1 style={{ textAlign: 'center' }}>Administración de laboratorios y espacios</h1>
+    <div className="container-sm p-3" style={{ marginTop: '70px' }}>
+      <h1 style={{ textAlign: 'center' }}>Administración de áreas</h1>
       {
         alertMessage.estado &&
         <Alert clase={alertMessage.clase} mensaje={alertMessage.msg} >

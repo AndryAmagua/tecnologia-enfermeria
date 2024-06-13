@@ -5,7 +5,6 @@ import Alert from '@/components/Alert'
 import { useState, useEffect } from 'react'
 
 function CardCatedra() {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL
     const [formData, setFormData] = useState({})
     const [data, setData] = useState([])
     const [alertMessage, setAlertMessage] = useState({ estado: false, clase: "", msg: "" })

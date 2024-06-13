@@ -6,12 +6,16 @@ import MUIDataTable from "mui-datatables"
 function PeriodoTable({ data, onEdit, onDelete }) {
     const columns = [
         {
-            name: 'PEA_CODIGO',
-            label: "CÓDIGO",
+            name: 'codigo',
+            label: "Código",
         },
         {
-            name: 'PEA_NOMBRE',
-            label: "NOMBRE DE PERIODO",
+            name: 'nombre',
+            label: "Periodo académico",
+        },
+        {
+            name: 'carrera',
+            label: "Carrera",
         },
         {
             name: 'actions',
@@ -29,7 +33,7 @@ function PeriodoTable({ data, onEdit, onDelete }) {
                             </button>
                             <button type="button" className="btn btn-outline-danger btn-sm mx-2" onClick={() => {
                                 const dataIndex = tableMeta.rowIndex
-                                const id = data[dataIndex].PEA_ID
+                                const id = data[dataIndex].periodo_id
                                 onDelete(id)
                             }}>
                                 <Image src={deleteSVG} alt="SVG Delete" />

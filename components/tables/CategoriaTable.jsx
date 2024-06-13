@@ -6,8 +6,8 @@ import MUIDataTable from "mui-datatables"
 function CategoriaTable({ data, onEdit, onDelete }) {
     const columns = [
         {
-            name: 'TIP_NOMBRE',
-            label: "TIPO DE EQUIPO",
+            name: 'nombre',
+            label: "CATEGORIA DE EQUIPO",
         },
         {
             name: 'actions',
@@ -25,7 +25,7 @@ function CategoriaTable({ data, onEdit, onDelete }) {
                             </button>
                             <button type="button" className="btn btn-outline-danger btn-sm mx-2" onClick={() => {
                                 const dataIndex = tableMeta.rowIndex
-                                const id = data[dataIndex].TIP_ID
+                                const id = data[dataIndex].categoria_id
                                 onDelete(id)
                             }}>
                                 <Image src={deleteSVG} alt="SVG Delete" />

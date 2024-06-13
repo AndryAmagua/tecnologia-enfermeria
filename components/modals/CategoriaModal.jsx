@@ -6,7 +6,7 @@ function CategoriaModal({ data, showModal, funcion }) {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Fomulario de tipos de equipo biomédico</h5>
+            <h5 className="modal-title">Fomulario de categorias de equipos biomédicos</h5>
             <button className="btn-close" onClick={() => showModal(false)}>
               <span aria-hidden={true}></span>
             </button>
@@ -14,7 +14,7 @@ function CategoriaModal({ data, showModal, funcion }) {
           <div className="modal-body">
             <fieldset>
               <Formik
-                initialValues={{ id: data.TIP_ID || 0, nombre: data.TIP_NOMBRE || "" }}
+                initialValues={{ categoria_id: data.categoria_id || 0, nombre: data.nombre || "" }}
                 validate={values => {
                   const errors = {}
                   if (!values.nombre) {

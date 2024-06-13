@@ -5,7 +5,7 @@ export async function GET(request) {
     const db = await openDB()
     if (db.estado === undefined) {
         db.connect()
-        const [rows, fields] = await db.query('SELECT tbl_insumos.INS_ID ,tbl_insumos.INS_NOMBRE, tbl_insumos.INS_DESCRIPCION, tbl_insumos.INS_UNIDAD_MEDIDA, tbl_insumos.INS_PRESENTACION, tbl_insumos.INS_STOCK_MINIMO, tbl_laboratorios.LAB_ID, tbl_laboratorios.LAB_NOMBRE FROM tbl_insumos INNER JOIN tbl_laboratorios ON tbl_insumos.LAB_ID = tbl_laboratorios.LAB_ID WHERE INS_ESTADO = 1')
+        const [rows, fields] = await db.query('SELECT A.insumo_id ,A.nombre, A.descripcion, A.unidad_medida, A.presentacion, A.stock_minimo, B.area_id, B.nombre AS area FROM tbl_insumos AS A INNER JOIN tbl_area_reserva B ON A.area_id = B.area_id WHERE A.estado = 1')
         db.end()
         return NextResponse.json({ data: rows }, { status: 200 })
 
@@ -17,9 +17,9 @@ export async function GET(request) {
 export async function POST(request) {
     const db = await openDB()
     db.connect()
-    const { nombre, descripcion, unidad, presentacion, stockMinimo, laboratorioID } = await request.json()
-    const [result, fields] = await db.query('INSERT INTO tbl_insumos (INS_NOMBRE, INS_DESCRIPCION, INS_UNIDAD_MEDIDA, INS_PRESENTACION, INS_STOCK_MINIMO, LAB_ID) VALUES (?, ?, ?, ?, ?, ?)', [nombre, descripcion, unidad, presentacion, stockMinimo, laboratorioID]);
-    await db.query('INSERT INTO tbl_movimientos_insumos (INS_ID) VALUES (?)', [result.insertId]);
+    const { nombre, descripcion, unidad_medida, presentacion, stock_minimo, area_id } = await request.json()
+    const [result, fields] = await db.query('INSERT INTO tbl_insumos (nombre, descripcion, unidad_medida, presentacion, stock_minimo, area_id) VALUES (?, ?, ?, ?, ?, ?)', [nombre, descripcion, unidad_medida, presentacion, stock_minimo, area_id]);
+    await db.query('INSERT INTO tbl_movimientos_insumos (insumo_id) VALUES (?)', [result.insertId]);
     db.end()
     if (result.affectedRows > 0) {
         return NextResponse.json({ msg: "Insumo registrado", estado: true }, { status: 201 })
@@ -31,8 +31,8 @@ export async function POST(request) {
 export async function PUT(request) {
     const db = await openDB()
     db.connect()
-    const { nombre, descripcion, unidad, presentacion, stockMinimo, laboratorioID, id } = await request.json()
-    const [result, fields] = await db.query('UPDATE tbl_insumos SET INS_NOMBRE = ?, INS_DESCRIPCION = ?, INS_UNIDAD_MEDIDA = ?, INS_PRESENTACION = ?, INS_STOCK_MINIMO = ?, LAB_ID = ? WHERE INS_ID = ?', [nombre, descripcion, unidad, presentacion, stockMinimo, laboratorioID, id]);
+    const { nombre, descripcion, unidad_medida, presentacion, stock_minimo, area_id, insumo_id } = await request.json()
+    const [result, fields] = await db.query('UPDATE tbl_insumos SET nombre = ?, descripcion = ?, unidad_medida = ?, presentacion = ?, stock_minimo = ?, area_id = ? WHERE insumo_id = ?', [nombre, descripcion, unidad_medida, presentacion, stock_minimo, area_id, insumo_id]);
     db.end()
     if (result.changedRows > 0) {
         return NextResponse.json({ msg: "Insumo editado", estado: true }, { status: 202 })

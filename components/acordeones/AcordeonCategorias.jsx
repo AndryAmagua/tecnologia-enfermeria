@@ -5,7 +5,6 @@ import Alert from '@/components/Alert'
 import { useState, useEffect } from 'react'
 
 function AcordeonCategorias() {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL
     const [formData, setFormData] = useState({})
     const [data, setData] = useState([])
     const [alertMessage, setAlertMessage] = useState({ estado: false, clase: "", msg: "" })
@@ -22,14 +21,12 @@ function AcordeonCategorias() {
         }
     }
 
-    async function createCategoria(categoria) {
+    async function createCategoria(values) {
         try {
             const response = await fetch('api/equipo/categoria', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    nombre: categoria.nombre
-                })
+                body: JSON.stringify(values)
             })
             const result = await response.json()
             setModalCreate(false)
@@ -44,12 +41,12 @@ function AcordeonCategorias() {
         }
     }
 
-    async function editCategoria(categoria) {
+    async function editCategoria(values) {
         try {
             const response = await fetch('api/equipo/categoria', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ nombre: categoria.nombre, id: categoria.id })
+                body: JSON.stringify(values)
             })
             const result = await response.json()
             setModalEdit(false)

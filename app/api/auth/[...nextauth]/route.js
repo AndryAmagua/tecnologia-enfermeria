@@ -11,25 +11,28 @@ const handler = NextAuth({
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
-                const USER = process.env.AUTH_USER
-                const PASSW = process.env.AUTH_PASSW
+                // const USER = process.env.AUTH_USER
+                // const PASSW = process.env.AUTH_PASSW
+                const USER = 'admin'
+                const PASSW = '65pT8HE9T4kQ'
 
-                const response = await fetch('https://api.pucesi.edu.ec/Web-Services/api/auth/user', {
+                const response = await fetch('https://api.pucesi.edu.ec/Web-Services/api/auth/data', {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': 'Basic ' + encode(USER + ':' + PASSW)
                     },
                     body: JSON.stringify({
-                        user: credentials.username,
-                        pass: credentials.password
+                        usuario: credentials.username,
+                        password: credentials.password
                     })
                 })
                 const result = await response.json()
-                if (result.value == false) {
-                    throw new Error(result.msg)
+                console.log(result)
+                if (result.error) {
+                    throw new Error(result.message)
                 }
-                return result.data
+                return result
             }
         })
     ],

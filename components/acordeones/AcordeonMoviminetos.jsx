@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 
 function AcordeonMoviminetos({ setEntrada, setSalida }) {
     const validationSchema = Yup.object({
-        insumoID: Yup.number().min(1, 'Seleccione un insumo'),
+        insumo_id: Yup.number().min(1, 'Seleccione un insumo'),
         cantidad: Yup.number().required('Cantidad es requerido').min(1, 'Cantidad minima es 1'),
     })
 
@@ -26,7 +26,7 @@ function AcordeonMoviminetos({ setEntrada, setSalida }) {
                                         <div className="card-header">Entradas</div>
                                         <div className="card-body">
                                             <Formik
-                                                initialValues={{ insumoID: 0, fecha: new Date().toISOString().substr(0, 10), cantidad: 0 }}
+                                                initialValues={{ insumo_id: 0, fecha: new Date().toISOString().substr(0, 10), cantidad: 0 }}
                                                 validationSchema={validationSchema}
                                                 onSubmit={(values, { setSubmitting, resetForm }) => {
                                                     setTimeout(() => {
@@ -41,7 +41,7 @@ function AcordeonMoviminetos({ setEntrada, setSalida }) {
                                                         <div className="form-group">
                                                             <label className="col-form-label" >Insumo</label>
                                                             <SelectInsumo />
-                                                            <ErrorMessage className='text-danger' name="insumoID" component="div" />
+                                                            <ErrorMessage className='text-danger' name="insumo_id" component="div" />
                                                         </div>
                                                         <div className="form-group">
                                                             <label className="col-form-label mt-2" >Fecha</label>
@@ -68,7 +68,7 @@ function AcordeonMoviminetos({ setEntrada, setSalida }) {
                                         <div className="card-header">Salidas</div>
                                         <div className="card-body">
                                             <Formik
-                                                initialValues={{ insumoID: 0, fecha: new Date().toISOString().substr(0, 10), cantidad: 0 }}
+                                                initialValues={{ insumo_id: 0, fecha: new Date().toISOString().substr(0, 10), cantidad: 0 }}
                                                 validationSchema={validationSchema}
                                                 onSubmit={(values, { setSubmitting, resetForm }) => {
                                                     setTimeout(() => {
@@ -83,7 +83,7 @@ function AcordeonMoviminetos({ setEntrada, setSalida }) {
                                                         <div className="form-group">
                                                             <label className="col-form-label" >Insumo</label>
                                                             <SelectInsumo />
-                                                            <ErrorMessage className='text-danger' name="insumoID" component="div" />
+                                                            <ErrorMessage className='text-danger' name="insumo_id" component="div" />
                                                         </div>
                                                         <div className="form-group">
                                                             <label className="col-form-label mt-2" >Fecha</label>

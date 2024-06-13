@@ -5,7 +5,7 @@ export async function GET(request) {
   const db = await openDB()
   if (db.estado === undefined) {
     db.connect()
-    const [rows, fields] = await db.query('SELECT * FROM tbl_laboratorios WHERE LAB_ESTADO = 1')
+    const [rows, fields] = await db.query('SELECT * FROM tbl_area_reserva WHERE estado = 1')
     db.end()
     return NextResponse.json({ data: rows }, { status: 200 })
 
@@ -18,8 +18,8 @@ export async function POST(request) {
   const db = await openDB()
 
   db.connect()
-  const { nombre, capacidad, tipoEspacio } = await request.json()
-  const [result, fields] = await db.query('INSERT INTO tbl_laboratorios (LAB_NOMBRE, LAB_CAPACIDAD, LAB_TIPO) VALUES (?, ?, ?)', [nombre, capacidad, tipoEspacio]);
+  const { nombre, capacidad, tipo } = await request.json()
+  const [result, fields] = await db.query('INSERT INTO tbl_area_reserva (nombre, capacidad, tipo) VALUES (?, ?, ?)', [nombre, capacidad, tipo]);
   db.end()
   if (result.affectedRows > 0) {
     return NextResponse.json({ msg: "Laboratorio registrado", estado: true }, { status: 201 })
@@ -32,8 +32,8 @@ export async function POST(request) {
 export async function PUT(request) {
   const db = await openDB()
   db.connect()
-  const { nombre, capacidad, tipoEspacio, id } = await request.json()
-  const [result, fields] = await db.query('UPDATE tbl_laboratorios SET LAB_NOMBRE = ?, LAB_CAPACIDAD = ?, LAB_TIPO = ? WHERE LAB_ID = ?', [nombre, capacidad, tipoEspacio, id]);
+  const { nombre, capacidad, tipo, area_id } = await request.json()
+  const [result, fields] = await db.query('UPDATE tbl_area_reserva SET nombre = ?, capacidad = ?, tipo = ? WHERE area_id = ?', [nombre, capacidad, tipo, area_id]);
   db.end()
   if (result.changedRows > 0) {
     return NextResponse.json({ msg: "Laboratorio editado", estado: true }, { status: 202 })
