@@ -17,8 +17,8 @@ export async function GET(request) {
 export async function POST(request) {
     const db = await openDB()
     db.connect()
-    const { carrera_id, periodo_id, modalidad, solicitante, asignatura_id, area_id, aula, nivel, paralelo, fecha, horaInicio, horaFin, temaGuia, ejecucion_id, detalle, observacion } = await request.json()
-    const [result, fields] = await db.query('INSERT INTO tbl_solicitud_interna ( carrera_id, periodo_id, modalidad, solicitante, asignatura_id, area_id, aula, nivel, paralelo, fecha, horaInicio, horaFin, temaGuia, ejecucion_id, detalle) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [carrera_id, periodo_id, modalidad, solicitante, asignatura_id, area_id, aula, nivel, paralelo, fecha, horaInicio, horaFin, temaGuia, ejecucion_id, detalle, observacion])
+    const { carrera_id, periodo_id, modalidad, solicitante, asignatura_id, area_id, aula, nivel, paralelo, fecha, horaInicio, horaFin, temaGuia, ejecucion_id, detalle } = await request.json()
+    const [result, fields] = await db.query('INSERT INTO tbl_solicitud_interna ( carrera_id, periodo_id, modalidad, solicitante, asignatura_id, area_id, aula, nivel, paralelo, fecha, horaInicio, horaFin, temaGuia, ejecucion_id, detalle) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [carrera_id, periodo_id, modalidad, solicitante, asignatura_id, area_id, aula, nivel, paralelo, fecha, horaInicio, horaFin, temaGuia, ejecucion_id, detalle])
     db.end()
     if (result.affectedRows > 0) {
         return NextResponse.json({ msg: "Solicitud registrada", estado: true }, { status: 201 })
