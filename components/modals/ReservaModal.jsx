@@ -15,13 +15,13 @@ function ReservaModal({ data, showModal, funcion }) {
                     <div className="modal-body">
                         <fieldset>
                             <Formik
-                                initialValues={{ id: data.SOL_ID, observacion: data.SOL_OBSERVACION || "", estado: (data.EST_ID.toString()) }}
+                                initialValues={{ solicitud_id: data.solicitud_id, observacion: data.observacion || "", estado_id: (data.estado_id.toString()) }}
                                 validate={values => {
                                     const errors = {}
-                                    if (!values.estado) {
-                                        errors.estado = 'Seleccione un nuevo estado'
+                                    if (!values.estado_id) {
+                                        errors.estado_id = 'Seleccione un nuevo estado'
                                     }
-                                    if (values.estado == '3') {
+                                    if (values.estado_id == '3') {
                                         if (!values.observacion) {
                                             errors.observacion = 'Añada una breve descripción del motivo de rechazo'
                                         }
@@ -30,7 +30,7 @@ function ReservaModal({ data, showModal, funcion }) {
                                 }}
                                 onSubmit={(values, { setSubmitting }) => {
                                     setTimeout(() => {
-                                        if (values.estado == '2') {
+                                        if (values.estado_id == '2') {
                                             values.observacion = ""
                                         }
                                         funcion(values)
@@ -48,7 +48,7 @@ function ReservaModal({ data, showModal, funcion }) {
                                             <fieldset disabled={true}>
                                                 <div className="input-group">
                                                     <span className="input-group-text">Solicitante</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.SOL_SOLICITANTE} />
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.solicitante} />
                                                 </div>
                                             </fieldset>
                                         </div>
@@ -56,7 +56,7 @@ function ReservaModal({ data, showModal, funcion }) {
                                             <fieldset disabled={true}>
                                                 <div className="input-group">
                                                     <span className="input-group-text">Carrera</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.CAR_NOMBRE} />
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.carrera} />
                                                 </div>
                                             </fieldset>
                                         </div>
@@ -64,34 +64,15 @@ function ReservaModal({ data, showModal, funcion }) {
                                             <fieldset disabled={true}>
                                                 <div className="input-group">
                                                     <span className="input-group-text">Nivel y paralelo</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.NIV_NOMBRE + " " + data.PAR_NOMBRE} />
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.nivel + " " + data.paralelo} />
                                                 </div>
                                             </fieldset>
                                         </div>
-                                        <div className="form-group mt-4">
-                                            <fieldset disabled={true}>
-                                                <div className="input-group">
-                                                    <span className="input-group-text">N° estudiantes</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.SOL_ESTUDIANTES} />
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                        {
-                                            data.MOT_DESCRIPCION != null &&
-                                            <div className="form-group mt-4">
-                                                <fieldset disabled={true}>
-                                                    <div className="input-group">
-                                                        <span className="input-group-text">Motivo de reserva</span>
-                                                        <input className="form-control" id="disabledInput" type="text" placeholder={data.MOT_DESCRIPCION} />
-                                                    </div>
-                                                </fieldset>
-                                            </div>
-                                        }
                                         <div className="form-group mt-4">
                                             <fieldset disabled={true}>
                                                 <div className="input-group">
                                                     <span className="input-group-text">N° Guia</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.SOL_GUIA} />
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.temaGuia} />
                                                 </div>
                                             </fieldset>
                                         </div>
@@ -104,18 +85,18 @@ function ReservaModal({ data, showModal, funcion }) {
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Cambiar estado de solicitud</label>
                                             <div className="form-check">
-                                                <Field name="estado" type="radio" value={'2'} />
+                                                <Field name="estado_id" type="radio" value={'2'} />
                                                 <label className="form-check-label mx-2" for="optionsRadios1">
                                                     Aprobado
                                                 </label>
                                             </div>
                                             <div className="form-check">
-                                                <Field name="estado" type="radio" value={'3'} />
+                                                <Field name="estado_id" type="radio" value={'3'} />
                                                 <label className="form-check-label mx-2" for="optionsRadios1">
                                                     Rechazado
                                                 </label>
                                             </div>
-                                            <ErrorMessage className='text-danger' name="estado" component="div" />
+                                            <ErrorMessage className='text-danger' name="estado_id" component="div" />
                                         </div>
                                         <div className="form-group mt-4">
                                             <button className="btn btn-primary" type="submit" disabled={isSubmitting}>

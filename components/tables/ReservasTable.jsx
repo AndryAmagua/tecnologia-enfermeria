@@ -94,6 +94,14 @@ function ReservasTable({ data, onEdit }) {
             label: "ETAPA DE PRÁCTICA",
         },
         {
+            name: 'estado_id',
+            label: "ESTADO ID",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
             name: 'estado',
             label: "ESTADO",
             options: {
