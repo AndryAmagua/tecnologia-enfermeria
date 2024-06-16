@@ -17,10 +17,10 @@ export async function GET(request) {
 export async function POST(request) {
     const db = await openDB()
     db.connect()
-    const { nombres, apellidos, cedula, correo, institucion } = await request.json()
+    const { nombre_completo, cedula, correo, institucion } = await request.json()
     const [result, fields] = await db.query('SELECT * FROM tbl_personal_externo WHERE correo = LOWER(?) OR cedula = LOWER(?)', [correo, cedula])
     if (result.length == 0) {
-        await db.query('INSERT INTO tbl_personal_externo ( nombres, apellidos, cedula, correo, institucion) VALUES (LOWER(?), LOWER(?), LOWER(?), LOWER(?), LOWER(?))', [nombres, apellidos, cedula, correo, institucion])
+        await db.query('INSERT INTO tbl_personal_externo ( nombre_completo, cedula, correo, institucion) VALUES (LOWER(?), LOWER(?), LOWER(?), LOWER(?))', [nombre_completo, cedula, correo, institucion])
         db.end()
         return NextResponse.json({ msg: "Usuario registrado", estado: true }, { status: 201 })
     } else {

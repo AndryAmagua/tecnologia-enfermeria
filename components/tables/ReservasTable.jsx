@@ -33,6 +33,14 @@ function ReservasTable({ data, onEdit }) {
             }
         },
         {
+            name: 'aula',
+            label: "AULA'",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
             name: 'nivel',
             label: "NIVEL",
             options: {
@@ -92,6 +100,10 @@ function ReservasTable({ data, onEdit }) {
         {
             name: 'ejecucion',
             label: "ETAPA DE PRÁCTICA",
+            options: {
+                filter: false,
+                display: false
+            }
         },
         {
             name: 'estado_id',

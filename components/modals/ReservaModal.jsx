@@ -76,7 +76,20 @@ function ReservaModal({ data, showModal, funcion }) {
                                                 </div>
                                             </fieldset>
                                         </div>
-
+                                        <div className="form-group mt-4">
+                                            <fieldset disabled={true}>
+                                                <div className="input-group">
+                                                    <span className="input-group-text">Área de practica</span>
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.area || data.aula} />
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="col-form-label mt-4" >Materiales y consideraciones</label>
+                                            <textarea class="form-control" id="disabledText" rows="3" disabled>
+                                                {data.detalle}
+                                            </textarea>
+                                        </div>
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >observacion (solo si la reserva es rechazada)</label>
                                             <Field className="form-control" type="text" name="observacion" />
