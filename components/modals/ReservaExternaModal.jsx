@@ -15,13 +15,13 @@ function ReservaExternaModal({ data, showModal, funcion }) {
                     <div className="modal-body">
                         <fieldset>
                             <Formik
-                                initialValues={{ id: data.SOE_ID, observacion: data.SOE_OBSERVACION || "", estado: data.EST_ID.toString() }}
+                                initialValues={{ solicitud_id: data.solicitud_id, observacion: data.observacion || "", estado_id: data.estado_id.toString() }}
                                 validate={values => {
                                     const errors = {}
-                                    if (!values.estado) {
-                                        errors.estado = 'Seleccione un nuevo estado'
+                                    if (!values.estado_id) {
+                                        errors.estado_id = 'Seleccione un nuevo estado'
                                     }
-                                    if (values.estado == '3') {
+                                    if (values.estado_id == '3') {
                                         if (!values.observacion) {
                                             errors.observacion = 'Añada una breve descripción del motivo de rechazo'
                                         }
@@ -30,7 +30,7 @@ function ReservaExternaModal({ data, showModal, funcion }) {
                                 }}
                                 onSubmit={(values, { setSubmitting }) => {
                                     setTimeout(() => {
-                                        if (values.estado == '2') {
+                                        if (values.estado_id == '2') {
                                             values.observacion = ""
                                         }
                                         funcion(values)
@@ -47,36 +47,17 @@ function ReservaExternaModal({ data, showModal, funcion }) {
                                         <div className="form-group mt-4">
                                             <fieldset disabled={true}>
                                                 <div className="input-group">
-                                                    <span className="input-group-text">Solicitante</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.PER_NOMBRES + " " + data.PER_APELLIDOS} />
+                                                    <span className="input-group-text">Tema</span>
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.tema} />
                                                 </div>
                                             </fieldset>
                                         </div>
                                         <div className="form-group mt-4">
-                                            <fieldset disabled={true}>
-                                                <div className="input-group">
-                                                    <span className="input-group-text">Institución</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.PER_INSTITUCION} />
-                                                </div>
-                                            </fieldset>
+                                            <label className="col-form-label" >Materiales y consideraciones</label>
+                                            <textarea class="form-control" id="disabledText" rows="4" disabled>
+                                                {data.detalle}
+                                            </textarea>
                                         </div>
-                                        <div className="form-group mt-4">
-                                            <fieldset disabled={true}>
-                                                <div className="input-group">
-                                                    <span className="input-group-text">N° asistentes</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.SOE_ASISTENTES} />
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                        <div className="form-group mt-4">
-                                            <fieldset disabled={true}>
-                                                <div className="input-group">
-                                                    <span className="input-group-text">Periodo académico</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.PEA_NOMBRE} />
-                                                </div>
-                                            </fieldset>
-                                        </div>
-
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >observacion (solo si la reserva es rechazada)</label>
                                             <Field className="form-control" type="text" name="observacion" />
@@ -85,18 +66,18 @@ function ReservaExternaModal({ data, showModal, funcion }) {
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Cambiar estado de solicitud</label>
                                             <div className="form-check">
-                                                <Field name="estado" type="radio" value={'2'} />
+                                                <Field name="estado_id" type="radio" value={'2'} />
                                                 <label className="form-check-label mx-2" for="optionsRadios1">
                                                     Aprobado
                                                 </label>
                                             </div>
                                             <div className="form-check">
-                                                <Field name="estado" type="radio" value={'3'} />
+                                                <Field name="estado_id" type="radio" value={'3'} />
                                                 <label className="form-check-label mx-2" for="optionsRadios1">
                                                     Rechazado
                                                 </label>
                                             </div>
-                                            <ErrorMessage className='text-danger' name="estado" component="div" />
+                                            <ErrorMessage className='text-danger' name="estado_id" component="div" />
                                         </div>
                                         <div className="form-group mt-4">
                                             <button className="btn btn-primary" type="submit" disabled={isSubmitting}>

@@ -5,48 +5,15 @@ import MUIDataTable from "mui-datatables"
 function ReservasExternasTable({ data, onEdit }) {
     const columns = [
         {
-            name: 'solicitante',
-            label: "SOLICITANTE",
-            options: {
-                filter: false,
-                download: false,
-                customBodyRender: (value, tableMeta) => {
-                    const dataIndex = tableMeta.rowIndex
-                    const row = data[dataIndex]
-                    return (
-                        <>
-                            {row['PER_NOMBRES']}  {row['PER_APELLIDOS']}
-                        </>
-                    )
-                }
-            }
+            name: 'nombre_completo',
+            label: "SOLICITANTE"
         },
         {
-            name: 'PER_NOMBRES',
-            label: "NOMBRES",
-            options: {
-                filter: false,
-                display: false
-            }
+            name: 'institucion',
+            label: "INSTITUCIÓN"
         },
         {
-            name: 'PER_APELLIDOS',
-            label: "APELLIDOS",
-            options: {
-                filter: false,
-                display: false
-            }
-        },
-        {
-            name: 'PER_INSTITUCION',
-            label: "INSTITUCIÓN",
-            options: {
-                filter: false,
-                display: false
-            }
-        },
-        {
-            name: 'SOE_ASISTENTES',
+            name: 'asistentes',
             label: "CANTIDAD DE ASISTENTES",
             options: {
                 filter: false,
@@ -54,19 +21,15 @@ function ReservasExternasTable({ data, onEdit }) {
             }
         },
         {
-            name: 'LAB_NOMBRE',
+            name: 'area',
             label: "ESPACIO DE RESERVA ",
         },
         {
-            name: 'SOE_GUIA',
-            label: "GUÍA",
-        },
-        {
-            name: 'SOE_FECHA',
+            name: 'fecha',
             label: "FECHA",
         },
         {
-            name: 'SOE_HORA_INGRESO',
+            name: 'horaInicio',
             label: "HORA ENTRADA",
             options: {
                 filter: false,
@@ -74,7 +37,7 @@ function ReservasExternasTable({ data, onEdit }) {
             }
         },
         {
-            name: 'SOE_HORA_SALIDA',
+            name: 'horaFin',
             label: "HORA SALIDA",
             options: {
                 filter: false,
@@ -82,7 +45,7 @@ function ReservasExternasTable({ data, onEdit }) {
             }
         },
         {
-            name: 'horario',
+            name: 'formatTime',
             label: "HORA INICIO Y FIN",
             options: {
                 filter: false,
@@ -92,22 +55,14 @@ function ReservasExternasTable({ data, onEdit }) {
                     const row = data[dataIndex]
                     return (
                         <>
-                            {row['SOE_HORA_INGRESO']} - {row['SOE_HORA_SALIDA']}
+                            {row['horaInicio']} - {row['horaFin']}
                         </>
                     )
                 }
             }
         },
         {
-            name: 'PEA_NOMBRE',
-            label: "PERIODO ACADÉMICO",
-            options: {
-                filter: false,
-                display: false
-            }
-        },
-        {
-            name: 'EST_NOMBRE',
+            name: 'estado',
             label: "ESTADO",
             options: {
                 filter: false,

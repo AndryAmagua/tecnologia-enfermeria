@@ -6,7 +6,7 @@ export async function GET(request, { params }) {
     if (db.estado === undefined) {
         db.connect()
         const id = await params.id
-        const [rows, fields] = await db.query('SELECT A.solicitud_id, A.tema, A.asistentes, A.fecha, A.horaInicio, A.horaFin, A.detalle, A.observacion, B.area_id, B.nombre, C.estado_id, C.nombre FROM tbl_solicitud_externa AS A INNER JOIN area_reserva AS B ON A.area_id = B.area_id INNER JOIN tbl_estado_solicitud AS C ON A.estado_id = C.estado_id WHERE A.externo_id = ? ORDER BY A.solicitud_id DESC', [id])
+        const [rows, fields] = await db.query('SELECT A.solicitud_id, A.tema, A.asistentes, A.fecha, A.horaInicio, A.horaFin, A.detalle, A.observacion, B.area_id, B.nombre AS area, C.estado_id, C.nombre AS estado FROM tbl_solicitud_externa AS A INNER JOIN tbl_area_reserva AS B ON A.area_id = B.area_id INNER JOIN tbl_estado_solicitud AS C ON A.estado_id = C.estado_id WHERE A.externo_id = ? ORDER BY A.solicitud_id DESC', [id])
         db.end()
         return NextResponse.json({ data: rows }, { status: 200 })
 
