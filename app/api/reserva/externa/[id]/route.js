@@ -21,7 +21,7 @@ export async function PUT(request, { params }) {
     const id = await params.id
     const { tema, asistentes, area_id, fecha, horaInicio, horaFin, detalle } = await request.json()
 
-    const [result, fields] = await db.query('UPDATE tbl_solicitud_externa SET tema = ?, asistentes = ?, area_id = ?, fecha = ?, horaInicio = ?, horaFin = ?, detalle = ?, estado = 1 WHERE solicitud_id = ?', [tema, asistentes, area_id, fecha, horaInicio, horaFin, detalle, id]);
+    const [result, fields] = await db.query('UPDATE tbl_solicitud_externa SET tema = ?, asistentes = ?, area_id = ?, fecha = ?, horaInicio = ?, horaFin = ?, detalle = ?, estado_id = 1 WHERE solicitud_id = ?', [tema, asistentes, area_id, fecha, horaInicio, horaFin, detalle, id]);
     db.end()
     if (result.changedRows > 0) {
         return NextResponse.json({ msg: "Solicitud editada", estado: true }, { status: 201 })
