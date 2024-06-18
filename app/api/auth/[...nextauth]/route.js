@@ -33,7 +33,7 @@ const handler = NextAuth({
                     throw new Error(result.message)
                 }
                 else {
-                    await fetch('http://localhost:3000/api/usuarioAutorizado/validacion', {
+                    await fetch('https://tecnologia-enfermeria.vercel.app/api/usuarioAutorizado/validacion', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ cedula: result.cedula })
