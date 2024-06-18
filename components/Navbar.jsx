@@ -89,7 +89,10 @@ function Navbar() {
                       Cerrar sesión
                     </a>
                     <Link className="dropdown-item" href="/parametros">
-                      Ajustes de parámetros
+                      Parametros
+                    </Link>
+                    <Link className="dropdown-item" href="/usuariosAutorizados">
+                      Usuarios autorizados
                     </Link>
                   </div>
                 </div>

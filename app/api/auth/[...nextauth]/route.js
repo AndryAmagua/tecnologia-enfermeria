@@ -32,6 +32,20 @@ const handler = NextAuth({
                 if (result.error) {
                     throw new Error(result.message)
                 }
+                else {
+                    await fetch('http://localhost:3000/api/usuarioAutorizado/validacion', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ cedula: result.cedula })
+                    })
+                        .then(res => res.json())
+                        .then(json => {
+                            console.log(json.data.length)
+                            if (json.data.length != 1) {
+                                throw new Error('Usuario no autorizado')
+                            }
+                        })
+                }
                 return result
             }
         })

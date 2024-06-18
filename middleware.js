@@ -17,5 +17,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-    matcher: ['/movimientos', '/equipos', '/insumos', '/laboratorios', '/parametros', '/reservas/internas', '/reservas/externas'],
+    matcher: ['/movimientos', '/equipos', '/insumos', '/laboratorios', '/parametros', '/reservas/internas', '/reservas/externas', '/usuariosAutorizados'],
 }
