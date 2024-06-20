@@ -2,6 +2,7 @@ import CardCarrera from "@/components/cards/CardCarrera"
 import CardPeriodo from "@/components/cards/CardPeriodo"
 import CardCatedra from "@/components/cards/CardCatedra"
 import CardEjecucion from "@/components/cards/CardEjecucion"
+import CardEspecialidad from "@/components/cards/CardEspecialidad"
 
 function Parametros() {
     return (
@@ -49,6 +50,16 @@ function Parametros() {
                         EJECUCIONES DE PRACTICAS
                     </a>
                 </li>
+                <li className="nav-item" role="presentation">
+                    <a
+                        className="nav-link"
+                        data-bs-toggle="tab"
+                        href="#especialidades"
+                        role="tab"
+                    >
+                        ESPECIALIDADES MEDICAS
+                    </a>
+                </li>
             </ul>
             <div id="myTabContent" className="tab-content">
                 <div className="tab-pane fade p-3" id="carreras" role="tabpanel">
@@ -62,6 +73,9 @@ function Parametros() {
                 </div>
                 <div className="tab-pane fade p-3" id="ejecuciones" role="tabpanel">
                     <CardEjecucion />
+                </div>
+                <div className="tab-pane fade p-3" id="especialidades" role="tabpanel">
+                    <CardEspecialidad />
                 </div>
             </div>
         </div>
