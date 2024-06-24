@@ -9,24 +9,50 @@ function ReservasTable({ data, onEdit }) {
             label: "MODALIDAD",
         },
         {
-            name: 'MOT_DESCRIPCION',
-            label: "MOTIVO DE RESERVA",
+            name: 'solicitante',
+            label: "SOLICITANTE",
+        },
+        {
+            name: 'asignatura/especialidad',
+            label: "ASIGNATURA/ESPECIALIDAD",
+            options: {
+                download: false,
+                filter: false,
+                customBodyRender: (value, tableMeta) => {
+                    const dataIndex = tableMeta.rowIndex
+                    const row = data[dataIndex]
+                    return (
+                        <>
+                            {
+                                row['asignatura'] ?
+                                    <span>{row['asignatura']}</span>
+                                    :
+                                    <span>{row['especialidad']}</span>
+                            }
+                        </>
+                    )
+                }
+            }
+        },
+        {
+            name: 'asignatura',
+            label: "ASIGNATURA",
             options: {
                 filter: false,
                 display: false
             }
         },
         {
-            name: 'solicitante',
-            label: "SOLICITANTE",
-        },
-        {
-            name: 'asignatura',
-            label: "ASIGNATURA",
+            name: 'especialidad',
+            label: "ESPECIALIDAD",
+            options: {
+                filter: false,
+                display: false
+            }
         },
         {
             name: 'area',
-            label: "ÁREA'",
+            label: "ÁREA",
             options: {
                 filter: false,
                 display: false
@@ -34,7 +60,7 @@ function ReservasTable({ data, onEdit }) {
         },
         {
             name: 'aula',
-            label: "AULA'",
+            label: "AULA",
             options: {
                 filter: false,
                 display: false
@@ -106,14 +132,6 @@ function ReservasTable({ data, onEdit }) {
             }
         },
         {
-            name: 'estado_id',
-            label: "ESTADO ID",
-            options: {
-                filter: false,
-                display: false
-            }
-        },
-        {
             name: 'estado',
             label: "ESTADO",
             options: {
@@ -161,6 +179,17 @@ function ReservasTable({ data, onEdit }) {
                 rowsPerPage: "Filas por página",
                 displayRows: "de",
             }
+        },
+        downloadOptions: {
+            filename: 'excel-format.csv',
+            separator: ';',
+            filterOptions: {
+                useDisplayedColumnsOnly: false,
+                useDisplayedRowsOnly: true,
+            }
+        },
+        onDownload: (buildHead, buildBody, columns, data) => {
+            return "\uFEFF" + buildHead(columns) + buildBody(data);
         }
     }
 
