@@ -60,18 +60,21 @@ function ReservaModal({ data, showModal, funcion }) {
                                                 </div>
                                             </fieldset>
                                         </div>
+                                        {
+                                            data.nivel &&
+                                            <div className="form-group mt-4">
+                                                <fieldset disabled={true}>
+                                                    <div className="input-group">
+                                                        <span className="input-group-text">Nivel y paralelo</span>
+                                                        <input className="form-control" id="disabledInput" type="text" placeholder={data.nivel + " " + data.paralelo} />
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        }
                                         <div className="form-group mt-4">
                                             <fieldset disabled={true}>
                                                 <div className="input-group">
-                                                    <span className="input-group-text">Nivel y paralelo</span>
-                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.nivel + " " + data.paralelo} />
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                        <div className="form-group mt-4">
-                                            <fieldset disabled={true}>
-                                                <div className="input-group">
-                                                    <span className="input-group-text">N° Guia</span>
+                                                    <span className="input-group-text">Tema y n° guia</span>
                                                     <input className="form-control" id="disabledInput" type="text" placeholder={data.temaGuia} />
                                                 </div>
                                             </fieldset>
@@ -84,6 +87,17 @@ function ReservaModal({ data, showModal, funcion }) {
                                                 </div>
                                             </fieldset>
                                         </div>
+                                        {
+                                            data.ejecucion &&
+                                            <div className="form-group mt-4">
+                                                <fieldset disabled={true}>
+                                                    <div className="input-group">
+                                                        <span className="input-group-text">Etapa de la práctica</span>
+                                                        <input className="form-control" id="disabledInput" type="text" placeholder={data.ejecucion} />
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        }
                                         <div className="form-group">
                                             <label className="col-form-label mt-4" >Materiales y consideraciones</label>
                                             <textarea class="form-control" id="disabledText" rows="3" disabled>

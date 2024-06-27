@@ -13,6 +13,14 @@ function ReservasExternasTable({ data, onEdit }) {
             label: "INSTITUCIÓN"
         },
         {
+            name: 'tema',
+            label: "TEMA",
+            options: {
+                filter: false,
+                display: false
+            }
+        },
+        {
             name: 'asistentes',
             label: "CANTIDAD DE ASISTENTES",
             options: {
@@ -23,6 +31,9 @@ function ReservasExternasTable({ data, onEdit }) {
         {
             name: 'area',
             label: "ESPACIO DE RESERVA ",
+            options: {
+                filter: false
+            }
         },
         {
             name: 'fecha',
@@ -63,10 +74,7 @@ function ReservasExternasTable({ data, onEdit }) {
         },
         {
             name: 'estado',
-            label: "ESTADO",
-            options: {
-                filter: false,
-            }
+            label: "ESTADO"
         },
         {
             name: 'actions',
@@ -110,6 +118,17 @@ function ReservasExternasTable({ data, onEdit }) {
                 rowsPerPage: "Filas por página",
                 displayRows: "de",
             }
+        },
+        downloadOptions: {
+            filename: 'excel-format.csv',
+            separator: ';',
+            filterOptions: {
+                useDisplayedColumnsOnly: false,
+                useDisplayedRowsOnly: true,
+            }
+        },
+        onDownload: (buildHead, buildBody, columns, data) => {
+            return "\uFEFF" + buildHead(columns) + buildBody(data);
         }
     }
 

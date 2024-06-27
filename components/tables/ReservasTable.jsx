@@ -14,7 +14,7 @@ function ReservasTable({ data, onEdit }) {
         },
         {
             name: 'asignatura/especialidad',
-            label: "ASIGNATURA/ESPECIALIDAD",
+            label: "ASIGNATURA / ESPECIALIDAD",
             options: {
                 download: false,
                 filter: false,
@@ -85,6 +85,9 @@ function ReservasTable({ data, onEdit }) {
         {
             name: 'fecha',
             label: "FECHA",
+            options: {
+                display: false
+            }
         },
         {
             name: 'horaInicio',
@@ -104,7 +107,7 @@ function ReservasTable({ data, onEdit }) {
         },
         {
             name: 'horario',
-            label: "HORA INICIO Y FIN",
+            label: "FECHA Y HORAS",
             options: {
                 download: false,
                 filter: false,
@@ -112,9 +115,10 @@ function ReservasTable({ data, onEdit }) {
                     const dataIndex = tableMeta.rowIndex
                     const row = data[dataIndex]
                     return (
-                        <>
-                            {row['horaInicio']} - {row['horaFin']}
-                        </>
+                        <div>
+                            <div>{row['fecha']}</div>
+                            <div>{row['horaInicio']} - {row['horaFin']}</div>
+                        </div>
                     )
                 }
             }
@@ -122,6 +126,10 @@ function ReservasTable({ data, onEdit }) {
         {
             name: 'temaGuia',
             label: "TEMA Y N° GUIA",
+            options: {
+                filter: false,
+                display: false
+            }
         },
         {
             name: 'ejecucion',
@@ -133,10 +141,7 @@ function ReservasTable({ data, onEdit }) {
         },
         {
             name: 'estado',
-            label: "ESTADO",
-            options: {
-                filter: false,
-            }
+            label: "ESTADO"
         },
         {
             name: 'actions',

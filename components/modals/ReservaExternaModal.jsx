@@ -53,6 +53,22 @@ function ReservaExternaModal({ data, showModal, funcion }) {
                                             </fieldset>
                                         </div>
                                         <div className="form-group mt-4">
+                                            <fieldset disabled={true}>
+                                                <div className="input-group">
+                                                    <span className="input-group-text">Área de reserva</span>
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.area} />
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div className="form-group mt-4">
+                                            <fieldset disabled={true}>
+                                                <div className="input-group">
+                                                    <span className="input-group-text">Cantidad de asitentes</span>
+                                                    <input className="form-control" id="disabledInput" type="text" placeholder={data.asistentes} />
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div className="form-group mt-4">
                                             <label className="col-form-label" >Materiales y consideraciones</label>
                                             <textarea class="form-control" id="disabledText" rows="4" disabled>
                                                 {data.detalle}
