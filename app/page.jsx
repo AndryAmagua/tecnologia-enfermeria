@@ -1,5 +1,6 @@
+import Link from "next/link"
 import Image from "next/image"
-import codigoQR from '@/public/qr-apk-saludPUCESI.png'
+import codigoQR from '@/public/qr-apk.png'
 
 export default function IndexPage() {
     return (
@@ -13,7 +14,7 @@ export default function IndexPage() {
                 </div>
                 <Image src={codigoQR} width={200} height={200} className="rounded mx-auto d-block" alt="APP-PUCETEC" />
                 <div className="card-body">
-                    <a href="https://expo.dev/accounts/andry5/projects/enfermeriaPUCESI/builds/5b604317-670f-40f9-a620-68a012e443b0" className="card-link" target="_blank">Link de descarga</a>
+                    <a href="/saludPUCESI.apk" download>Clic aqui para descargar</a>
                 </div>
             </div>
         </div>
