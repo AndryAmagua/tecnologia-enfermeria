@@ -1,5 +1,5 @@
 import Image from "next/image"
-import codigoQR from '@/public/qr-apk.png'
+import codigoQR from '@/public/imageQR.png'
 
 export default function IndexPage() {
     return (
