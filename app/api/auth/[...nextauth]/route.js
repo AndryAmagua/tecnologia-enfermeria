@@ -11,10 +11,8 @@ const handler = NextAuth({
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
-                // const USER = process.env.AUTH_USER
-                // const PASSW = process.env.AUTH_PASSW
-                const USER = 'admin'
-                const PASSW = '65pT8HE9T4kQ'
+                const USER = process.env.NEXT_PUBLIC_USER
+                const PASSW = process.env.NEXT_PUBLIC_PASSW
 
                 const response = await fetch('https://api.pucesi.edu.ec/Web-Services/api/auth/data', {
                     method: "POST",
@@ -33,7 +31,7 @@ const handler = NextAuth({
                     throw new Error(result.message)
                 }
                 else {
-                    await fetch('https://tecnologia-enfermeria.vercel.app/api/usuarioAutorizado/validacion', {
+                    await fetch('http://localhost:3000/api/usuarioAutorizado/validacion', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ cedula: result.cedula })
